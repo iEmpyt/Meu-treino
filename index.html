@@ -1,514 +1,1066 @@
 <!DOCTYPE html>
-<html lang="pt-BR" class="dark">
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-  <title>Ficha de Treino ABC 2x</title>
-
-  <!-- High-Res Apple Touch Icon & Favicon SVG Data URIs -->
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Crect width='512' height='512' rx='128' fill='%2305070A'/%3E%3Crect width='496' height='496' x='8' y='8' rx='120' fill='none' stroke='%231F293D' stroke-width='6'/%3E%3Cg transform='translate(0, -6)'%3E%3Cpath d='M120 256 H392' stroke='%2338BDF8' stroke-width='36' stroke-linecap='round'/%3E%3Cpath d='M150 170 V342' stroke='%23F97316' stroke-width='32' stroke-linecap='round'/%3E%3Cpath d='M190 140 V372' stroke='%2338BDF8' stroke-width='32' stroke-linecap='round'/%3E%3Cpath d='M362 170 V342' stroke='%23F97316' stroke-width='32' stroke-linecap='round'/%3E%3Cpath d='M322 140 V372' stroke='%2338BDF8' stroke-width='32' stroke-linecap='round'/%3E%3Cpath d='M256 195 L276 256 L236 256 L256 317' stroke='%2310B981' stroke-width='24' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/g%3E%3C/svg%3E">
-  <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Crect width='512' height='512' rx='128' fill='%2305070A'/%3E%3Crect width='496' height='496' x='8' y='8' rx='120' fill='none' stroke='%231F293D' stroke-width='6'/%3E%3Cg transform='translate(0, -6)'%3E%3Cpath d='M120 256 H392' stroke='%2338BDF8' stroke-width='36' stroke-linecap='round'/%3E%3Cpath d='M150 170 V342' stroke='%23F97316' stroke-width='32' stroke-linecap='round'/%3E%3Cpath d='M190 140 V372' stroke='%2338BDF8' stroke-width='32' stroke-linecap='round'/%3E%3Cpath d='M362 170 V342' stroke='%23F97316' stroke-width='32' stroke-linecap='round'/%3E%3Cpath d='M322 140 V372' stroke='%2338BDF8' stroke-width='32' stroke-linecap='round'/%3E%3Cpath d='M256 195 L276 256 L236 256 L256 317' stroke='%2310B981' stroke-width='24' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/g%3E%3C/svg%3E">
-
-  <!-- iOS PWA Meta Tags -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Treino Gabriel - Pro</title>
+  
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="apple-mobile-web-app-title" content="Meu Treino">
   <meta name="theme-color" content="#05070A">
 
-  <!-- Tailwind CSS & Phosphor Icons -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://unpkg.com/@phosphor-icons/web"></script>
-
-  <script>
-    tailwind.config = {
-      darkMode: 'class',
-      theme: {
-        extend: {
-          colors: {
-            pitch: '#05070A',
-            charcoal: '#0C1017',
-            cardBg: '#121824',
-            cardBorder: '#1F293D',
-            themeA: {
-              DEFAULT: '#3B82F6',
-              glow: 'rgba(59, 130, 246, 0.15)',
-              border: '#2563EB'
-            },
-            themeB: {
-              DEFAULT: '#F97316',
-              glow: 'rgba(249, 115, 22, 0.15)',
-              border: '#EA580C'
-            },
-            themeC: {
-              DEFAULT: '#10B981',
-              glow: 'rgba(16, 185, 129, 0.15)',
-              border: '#059669'
-            }
-          }
-        }
-      }
-    }
-  </script>
+  <!-- Favicon / Apple Touch Icon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Crect width='512' height='512' rx='120' fill='%2305070A'/%3E%3Cpath d='M120 180h40v152h-40zM352 180h40v152h-40zM160 210h30v92h-30zM322 210h30v92h-30zM190 240h132v32H190z' fill='%2394A3B8'/%3E%3Ccircle cx='256' cy='256' r='200' fill='none' stroke='%231E293B' stroke-width='16'/%3E%3C/svg%3E">
+  <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Crect width='512' height='512' rx='120' fill='%2305070A'/%3E%3Cpath d='M120 180h40v152h-40zM352 180h40v152h-40zM160 210h30v92h-30zM322 210h30v92h-30zM190 240h132v32H190z' fill='%2394A3B8'/%3E%3Ccircle cx='256' cy='256' r='200' fill='none' stroke='%231E293B' stroke-width='16'/%3E%3C/svg%3E">
 
   <style>
-    body {
-      background-color: #05070A;
-      color: #F8FAFC;
+    :root {
+      --bg-main: #05070A;
+      --bg-card: #0F172A;
+      --bg-input: #1E293B;
+      --border-subtle: #1E293B;
+      --border-accent: #334155;
+      --text-main: #F8FAFC;
+      --text-muted: #94A3B8;
+      --text-dim: #64748B;
+      
+      --accent-a: #3B82F6;
+      --accent-b: #F97316;
+      --accent-c: #10B981;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       -webkit-tap-highlight-color: transparent;
-      user-select: none;
-      -webkit-user-select: none;
     }
-    input {
-      user-select: text;
-      -webkit-user-select: text;
+
+    body {
+      background-color: var(--bg-main);
+      color: var(--text-main);
+      padding-bottom: 90px;
+      padding-top: env(safe-area-inset-top);
+      min-height: 100vh;
     }
-    .safe-top {
-      padding-top: max(env(safe-area-inset-top), 12px);
+
+    header {
+      padding: 16px 16px 12px;
+      background: rgba(5, 7, 10, 0.95);
+      backdrop-filter: blur(10px);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      border-bottom: 1px solid var(--border-subtle);
     }
-    .safe-bottom {
-      padding-bottom: max(env(safe-area-inset-bottom), 20px);
+
+    .header-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
     }
-    .tab-active-A {
-      background: #121824 !important;
-      color: #60A5FA !important;
-      border-color: #3B82F6 !important;
-      box-shadow: 0 0 15px rgba(59, 130, 246, 0.2);
+
+    .header-title h1 {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--text-main);
     }
-    .tab-active-B {
-      background: #121824 !important;
-      color: #FB923C !important;
-      border-color: #F97316 !important;
-      box-shadow: 0 0 15px rgba(249, 115, 22, 0.2);
+
+    .header-title p {
+      font-size: 0.75rem;
+      color: var(--text-muted);
     }
-    .tab-active-C {
-      background: #121824 !important;
-      color: #34D399 !important;
-      border-color: #10B981 !important;
-      box-shadow: 0 0 15px rgba(16, 185, 129, 0.2);
+
+    .header-actions {
+      display: flex;
+      gap: 8px;
     }
-    ::-webkit-scrollbar {
+
+    .btn-icon {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-muted);
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      cursor: pointer;
+    }
+
+    .nav-tabs {
+      display: flex;
+      gap: 6px;
+      background: #0B0F17;
+      padding: 4px;
+      border-radius: 12px;
+      border: 1px solid var(--border-subtle);
+    }
+
+    .tab-btn {
+      flex: 1;
+      padding: 10px 0;
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      font-weight: 600;
+      font-size: 0.85rem;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .tab-btn.active[data-target="A"] { background: var(--bg-card); color: var(--accent-a); border: 1px solid var(--accent-a); }
+    .tab-btn.active[data-target="B"] { background: var(--bg-card); color: var(--accent-b); border: 1px solid var(--accent-b); }
+    .tab-btn.active[data-target="C"] { background: var(--bg-card); color: var(--accent-c); border: 1px solid var(--accent-c); }
+
+    main {
+      padding: 16px;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .tab-content { display: none; }
+    .tab-content.active { display: block; }
+
+    .exercise-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 14px;
+      padding: 16px;
+      margin-bottom: 12px;
+    }
+
+    .exercise-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 12px;
+    }
+
+    .exercise-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text-main);
+    }
+
+    .btn-swap {
+      background: var(--bg-input);
+      border: 1px solid var(--border-accent);
+      color: var(--text-main);
+      padding: 4px 8px;
+      border-radius: 6px;
+      font-size: 0.75rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .controls-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .control-box {
+      background: var(--bg-main);
+      border: 1px solid var(--border-subtle);
+      border-radius: 10px;
+      padding: 8px 10px;
+    }
+
+    .control-label {
+      font-size: 0.65rem;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    .control-inputs {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 4px;
+    }
+
+    .btn-step {
+      background: var(--bg-input);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-main);
+      width: 28px;
+      height: 28px;
+      border-radius: 6px;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+
+    .val-display {
+      font-size: 0.9rem;
+      font-weight: 700;
+    }
+
+    .sets-row {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      border-top: 1px dashed var(--border-subtle);
+      padding-top: 12px;
+    }
+
+    .set-check {
+      flex: 1;
+      height: 34px;
+      background: var(--bg-main);
+      border: 1px solid var(--border-subtle);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--text-dim);
+      cursor: pointer;
+    }
+
+    .set-check.done-A { background: rgba(59, 130, 246, 0.2); color: var(--accent-a); border-color: var(--accent-a); }
+    .set-check.done-B { background: rgba(249, 115, 22, 0.2); color: var(--accent-b); border-color: var(--accent-b); }
+    .set-check.done-C { background: rgba(16, 185, 129, 0.2); color: var(--accent-c); border-color: var(--accent-c); }
+
+    .btn-remove {
+      background: transparent;
+      border: none;
+      color: var(--text-dim);
+      font-size: 0.8rem;
+      padding: 4px;
+      cursor: pointer;
+    }
+
+    /* Modal Generico */
+    .modal-overlay {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.85);
+      backdrop-filter: blur(8px);
+      z-index: 100;
       display: none;
+      align-items: flex-end;
+      justify-content: center;
+    }
+
+    .modal-card {
+      background: var(--bg-card);
+      border-top: 1px solid var(--border-accent);
+      border-radius: 20px 20px 0 0;
+      padding: 20px;
+      width: 100%;
+      max-width: 600px;
+      max-height: 80vh;
+      overflow-y: auto;
+    }
+
+    .modal-card h3 {
+      font-size: 1.1rem;
+      margin-bottom: 12px;
+      color: var(--text-main);
+    }
+
+    .swap-item {
+      padding: 12px;
+      background: var(--bg-main);
+      border: 1px solid var(--border-subtle);
+      border-radius: 10px;
+      margin-bottom: 8px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text-main);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .swap-item:active {
+      border-color: var(--accent-a);
+    }
+
+    .form-group {
+      margin-bottom: 12px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 10px;
+      background: var(--bg-main);
+      border: 1px solid var(--border-subtle);
+      border-radius: 8px;
+      color: var(--text-main);
+    }
+
+    .btn-save {
+      width: 100%;
+      padding: 12px;
+      background: var(--accent-a);
+      border: none;
+      color: #fff;
+      font-weight: 700;
+      border-radius: 10px;
+      cursor: pointer;
     }
   </style>
 </head>
-<body class="min-h-screen flex flex-col justify-between antialiased">
+<body>
 
-  <!-- Header Bar -->
-  <header class="bg-pitch/90 backdrop-blur-xl border-b border-cardBorder/60 sticky top-0 z-40 safe-top">
-    <div class="max-w-md mx-auto px-4 py-3 flex items-center justify-between">
-      <div class="flex items-center gap-3">
-        <div class="w-10 h-10 rounded-2xl bg-gradient-to-br from-slate-800 to-charcoal border border-slate-700/80 flex items-center justify-center shadow-lg">
-          <i class="ph-bold ph-barbell text-xl text-slate-200" id="headerIcon"></i>
-        </div>
-        <div>
-          <h1 class="text-base font-bold tracking-tight text-white flex items-center gap-2">
-            Meu Treino <span id="workoutBadge" class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full border transition-all duration-300">ABC 2x</span>
-          </h1>
-          <p class="text-xs text-slate-400 font-medium" id="headerSubtitle">Costas &amp; Bíceps</p>
-        </div>
+  <header>
+    <div class="header-top">
+      <div class="header-title">
+        <h1>Ficha de Treino</h1>
+        <p>Fase 2 - Banco & GitHub Sync</p>
       </div>
-
-      <!-- Button Guide -->
-      <button onclick="openModal('installModal')" class="w-9 h-9 rounded-xl bg-charcoal border border-cardBorder text-slate-300 flex items-center justify-center transition active:scale-95 hover:border-slate-600">
-        <i class="ph-bold ph-export text-base"></i>
-      </button>
-    </div>
-
-    <!-- Workout Selector Tabs -->
-    <div class="max-w-md mx-auto px-4 pb-3">
-      <div class="grid grid-cols-3 gap-2 bg-charcoal p-1.5 rounded-2xl border border-cardBorder">
-        <button onclick="switchTab('A')" id="tabA" class="py-2.5 rounded-xl font-bold text-xs border border-transparent transition-all duration-200 flex flex-col items-center justify-center">
-          <span>TREINO A</span>
-          <span class="text-[9px] font-normal opacity-70">Costas / Bíceps</span>
-        </button>
-        <button onclick="switchTab('B')" id="tabB" class="py-2.5 rounded-xl font-bold text-xs border border-transparent transition-all duration-200 flex flex-col items-center justify-center">
-          <span>TREINO B</span>
-          <span class="text-[9px] font-normal opacity-70">Peito / Tríceps</span>
-        </button>
-        <button onclick="switchTab('C')" id="tabC" class="py-2.5 rounded-xl font-bold text-xs border border-transparent transition-all duration-200 flex flex-col items-center justify-center">
-          <span>TREINO C</span>
-          <span class="text-[9px] font-normal opacity-70">Perna / Ombro</span>
-        </button>
+      <div class="header-actions">
+        <button class="btn-icon" onclick="openGithubModal()">⚙️</button>
       </div>
     </div>
+
+    <nav class="nav-tabs">
+      <button class="tab-btn active" data-target="A" onclick="switchTab('A')">TREINO A</button>
+      <button class="tab-btn" data-target="B" onclick="switchTab('B')">TREINO B</button>
+      <button class="tab-btn" data-target="C" onclick="switchTab('C')">TREINO C</button>
+    </nav>
   </header>
 
-  <!-- Main Content Area -->
-  <main class="max-w-md mx-auto w-full px-4 py-4 flex-1 pb-28">
-
-    <!-- Progress Card -->
-    <div class="bg-cardBg border border-cardBorder p-3.5 rounded-2xl mb-4 flex items-center justify-between shadow-sm">
-      <div class="flex items-center gap-3">
-        <div class="relative w-11 h-11 flex items-center justify-center">
-          <svg class="w-11 h-11 transform -rotate-90">
-            <circle cx="22" cy="22" r="18" stroke="#1F293D" stroke-width="4" fill="transparent" />
-            <circle id="progressCircle" cx="22" cy="22" r="18" stroke="#3B82F6" stroke-width="4" fill="transparent" stroke-dasharray="113" stroke-dashoffset="113" stroke-linecap="round" class="transition-all duration-300" />
-          </svg>
-          <span class="absolute text-[10px] font-bold text-slate-200" id="progressPercent">0%</span>
-        </div>
-        <div>
-          <div class="text-[11px] font-bold uppercase tracking-wider text-slate-400">Sessão Atual</div>
-          <div class="text-xs font-semibold text-slate-200" id="progressText">0 / 0 Exercícios Concluídos</div>
-        </div>
-      </div>
-
-      <div class="flex items-center gap-1.5">
-        <button onclick="resetCurrentSets()" title="Reiniciar marcas do dia" class="w-8 h-8 rounded-lg bg-charcoal hover:bg-slate-800 border border-cardBorder text-slate-300 flex items-center justify-center active:scale-95 transition">
-          <i class="ph-bold ph-arrow-counter-clockwise"></i>
-        </button>
-        <button onclick="openModal('addModal')" class="h-8 px-3 rounded-lg bg-slate-800 hover:bg-slate-700 border border-slate-700 text-xs font-bold text-white flex items-center gap-1 active:scale-95 transition">
-          <i class="ph-bold ph-plus"></i> Novo
-        </button>
-      </div>
-    </div>
-
-    <!-- Cards List -->
-    <div id="exerciseList" class="space-y-3">
-      <!-- Injected via JavaScript -->
-    </div>
+  <main>
+    <section id="tab-A" class="tab-content active"><div id="list-A"></div></section>
+    <section id="tab-B" class="tab-content"><div id="list-B"></div></section>
+    <section id="tab-C" class="tab-content"><div id="list-C"></div></section>
   </main>
 
-  <!-- Bottom Floating Bar -->
-  <div class="fixed bottom-0 left-0 right-0 z-30 bg-pitch/95 backdrop-blur-md border-t border-cardBorder/60 py-3 px-4 safe-bottom">
-    <div class="max-w-md mx-auto flex items-center justify-between text-xs text-slate-400 font-medium">
-      <span class="flex items-center gap-1.5">
-        <span class="w-2 h-2 rounded-full bg-emerald-500"></span> Modo Offline (Salvo Localmente)
-      </span>
-      <button onclick="openModal('addModal')" class="text-white font-bold flex items-center gap-1 hover:underline">
-        <i class="ph-bold ph-plus-circle text-base text-slate-300"></i> Adicionar
-      </button>
+  <!-- Modal de Substituição -->
+  <div id="swap-modal" class="modal-overlay" onclick="closeSwapModal()">
+    <div class="modal-card" onclick="event.stopPropagation()">
+      <h3>Substituir Exercício</h3>
+      <p style="font-size: 0.75rem; color: var(--text-muted); margin-bottom: 12px;">Selecione uma variação equivalente:</p>
+      <div id="swap-options-list"></div>
     </div>
   </div>
 
-  <!-- Modal: Add Exercise -->
-  <div id="addModal" class="fixed inset-0 bg-pitch/80 backdrop-blur-sm z-50 hidden flex items-end sm:items-center justify-center p-0 sm:p-4">
-    <div class="bg-cardBg border border-cardBorder w-full max-w-md rounded-t-3xl sm:rounded-3xl p-6 shadow-2xl space-y-4">
-      <div class="flex justify-between items-center border-b border-cardBorder pb-3">
-        <h3 class="text-sm font-bold text-white flex items-center gap-2">
-          <i class="ph-bold ph-barbell text-slate-300"></i> Adicionar ao <span id="modalTabTitle" class="text-brand-purple">Treino A</span>
-        </h3>
-        <button onclick="closeModal('addModal')" class="text-slate-400 hover:text-white p-1">
-          <i class="ph-bold ph-x text-lg"></i>
-        </button>
+  <!-- Modal GitHub PAT -->
+  <div id="github-modal" class="modal-overlay" onclick="closeGithubModal()">
+    <div class="modal-card" onclick="event.stopPropagation()">
+      <h3>Configurar GitHub Sync</h3>
+      <div class="form-group">
+        <label>Usuário do GitHub</label>
+        <input type="text" id="gh-user" placeholder="ex: iempyt">
       </div>
-
-      <form id="addForm" onsubmit="handleAddExercise(event)" class="space-y-3">
-        <div>
-          <label class="block text-[11px] font-semibold text-slate-400 mb-1">Nome do Exercício</label>
-          <input type="text" id="addName" required placeholder="Ex: Remada Articulada" class="w-full bg-charcoal border border-cardBorder rounded-xl px-3 py-2.5 text-xs text-white placeholder-slate-600 focus:outline-none focus:border-slate-500 transition">
-        </div>
-
-        <div class="grid grid-cols-2 gap-3">
-          <div>
-            <label class="block text-[11px] font-semibold text-slate-400 mb-1">Carga (ex: 20 kg ou 15 kg/lado)</label>
-            <input type="text" id="addWeight" required placeholder="Ex: 45 kg" class="w-full bg-charcoal border border-cardBorder rounded-xl px-3 py-2.5 text-xs text-white placeholder-slate-600 focus:outline-none focus:border-slate-500 transition">
-          </div>
-          <div>
-            <label class="block text-[11px] font-semibold text-slate-400 mb-1">Repetições Meta</label>
-            <input type="text" id="addReps" required placeholder="Ex: 8 - 12" class="w-full bg-charcoal border border-cardBorder rounded-xl px-3 py-2.5 text-xs text-white placeholder-slate-600 focus:outline-none focus:border-slate-500 transition">
-          </div>
-        </div>
-
-        <div class="pt-2 flex gap-2">
-          <button type="button" onclick="closeModal('addModal')" class="w-1/2 py-2.5 rounded-xl bg-charcoal hover:bg-slate-800 text-slate-300 font-bold text-xs transition border border-cardBorder">Cancelar</button>
-          <button type="submit" class="w-1/2 py-2.5 rounded-xl bg-slate-200 hover:bg-white text-pitch font-extrabold text-xs transition active:scale-95 shadow-md">Salvar</button>
-        </div>
-      </form>
-    </div>
-  </div>
-
-  <!-- Modal: iOS Installation Guide -->
-  <div id="installModal" class="fixed inset-0 bg-pitch/80 backdrop-blur-sm z-50 hidden flex items-end sm:items-center justify-center p-0 sm:p-4">
-    <div class="bg-cardBg border border-cardBorder w-full max-w-md rounded-t-3xl sm:rounded-3xl p-6 shadow-2xl space-y-4">
-      <div class="flex justify-between items-center border-b border-cardBorder pb-3">
-        <h3 class="text-sm font-bold text-white flex items-center gap-2">
-          <i class="ph-bold ph-apple-logo text-slate-300"></i> Instalar na Home do iPhone
-        </h3>
-        <button onclick="closeModal('installModal')" class="text-slate-400 hover:text-white p-1">
-          <i class="ph-bold ph-x text-lg"></i>
-        </button>
+      <div class="form-group">
+        <label>Repositório</label>
+        <input type="text" id="gh-repo" placeholder="ex: meu-treino">
       </div>
-
-      <div class="space-y-2.5 text-xs text-slate-300">
-        <p class="text-slate-400">Instale como aplicativo nativo sem App Store:</p>
-        
-        <div class="flex items-start gap-3 bg-charcoal p-3 rounded-xl border border-cardBorder">
-          <div class="w-6 h-6 rounded-lg bg-slate-800 text-slate-200 flex items-center justify-center font-bold text-xs shrink-0">1</div>
-          <div>
-            <div class="font-bold text-white">Safari</div>
-            <div class="text-slate-400">Certifique-se de estar abrindo este site pelo navegador <b>Safari</b>.</div>
-          </div>
-        </div>
-
-        <div class="flex items-start gap-3 bg-charcoal p-3 rounded-xl border border-cardBorder">
-          <div class="w-6 h-6 rounded-lg bg-slate-800 text-slate-200 flex items-center justify-center font-bold text-xs shrink-0">2</div>
-          <div>
-            <div class="font-bold text-white">Compartilhar</div>
-            <div class="text-slate-400">Toque no ícone de compartilhamento <i class="ph-bold ph-export"></i> no rodapé do navegador.</div>
-          </div>
-        </div>
-
-        <div class="flex items-start gap-3 bg-charcoal p-3 rounded-xl border border-cardBorder">
-          <div class="w-6 h-6 rounded-lg bg-slate-800 text-slate-200 flex items-center justify-center font-bold text-xs shrink-0">3</div>
-          <div>
-            <div class="font-bold text-white">Adicionar à Tela de Início</div>
-            <div class="text-slate-400">Selecione <b>"Adicionar à Tela de Início"</b> para criar o ícone.</div>
-          </div>
-        </div>
+      <div class="form-group">
+        <label>Caminho do Arquivo JSON</label>
+        <input type="text" id="gh-path" placeholder="ex: workout-data.json">
       </div>
-
-      <button onclick="closeModal('installModal')" class="w-full py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-bold text-xs transition border border-cardBorder">Concluído</button>
+      <div class="form-group">
+        <label>Personal Access Token (PAT)</label>
+        <input type="password" id="gh-token" placeholder="ghp_xxxxxxxxxxxx">
+      </div>
+      <button class="btn-save" onclick="saveGithubConfig()">Salvar e Sincronizar</button>
     </div>
   </div>
 
   <script>
-    // Prescrição Médica Original Estabilizada
-    const defaultData = {
+    // Banco de Variações (Mínimo 10 por grupo)
+    const exerciseBank = {
       A: [
-        { id: 'a1', name: 'Puxada Frontal Aberta', weight: '40 - 45 kg', reps: '8 - 12', sets: [false, false, false] },
-        { id: 'a2', name: 'Remada Baixa Triângulo', weight: '15 - 20 kg', reps: '8 - 12', sets: [false, false, false] },
-        { id: 'a3', name: 'Puxada Fechada Supinada', weight: '40 - 45 kg', reps: '8 - 12', sets: [false, false, false] },
-        { id: 'a4', name: 'Remada Curvada / Máq.', weight: '15 - 20 kg', reps: '8 - 12', sets: [false, false, false] },
-        { id: 'a5', name: 'Rosca Scott Barra W', weight: '10 kg/lado', reps: '8 - 12', sets: [false, false, false] },
-        { id: 'a6', name: 'Rosca Direta Barra', weight: '10 kg/lado', reps: '8 - 12', sets: [false, false, false] },
-        { id: 'a7', name: 'Rosca Martelo (Halteres)', weight: '10 kg/lado', reps: '8 - 12', sets: [false, false, false] }
+        "Puxada Frontal Aberta", "Puxada Frontal Pegada Neutra", "Puxada Articulada", 
+        "Pulldown na Polia", "Puxada Fechada Supinada", "Remada Baixa Triângulo", 
+        "Remada Curvada com Barra", "Remada Cavaleiro (Barra T)", "Remada Unilateral com Halter (Serrote)", 
+        "Pullover na Polia Alta", "Rosca Scott Barra W", "Rosca Direta Barra", "Rosca Martelo"
       ],
       B: [
-        { id: 'b1', name: 'Supino Reto Barra', weight: '16 - 18 kg/lado', reps: '8 - 12', sets: [false, false, false] },
-        { id: 'b2', name: 'Supino Inclinado Máquina', weight: '25 - 30 kg', reps: '8 - 12', sets: [false, false, false] },
-        { id: 'b3', name: 'Peck Deck (Crucifixo)', weight: '35 - 40 kg', reps: '8 - 12', sets: [false, false, false] },
-        { id: 'b4', name: 'Tríceps Pulley (Barrinha)', weight: '25 - 30 kg', reps: '8 - 12', sets: [false, false, false] },
-        { id: 'b5', name: 'Tríceps Corda', weight: '20 - 25 kg', reps: '8 - 12', sets: [false, false, false] },
-        { id: 'b6', name: 'Tríceps Testa', weight: '8 - 10 kg/lado', reps: '8 - 12', sets: [false, false, false] }
+        "Supino Reto Barra", "Supino Reto com Halteres", "Supino Inclinado Máquina", 
+        "Supino Inclinado Halteres", "Peck Deck (Crucifixo)", "Crossover Polia Alta", 
+        "Crossover Polia Baixa", "Dips (Paralelas Peito)", "Tríceps Pulley", 
+        "Tríceps Corda", "Tríceps Testa Barra W", "Tríceps Francês Halter", "Tríceps Coice Polia"
       ],
       C: [
-        { id: 'c1', name: 'Leg Press 45°', weight: '130 - 140 kg', reps: '8 - 12', sets: [false, false, false] },
-        { id: 'c2', name: 'Cadeira Extensora', weight: '50 - 55 kg', reps: '8 - 12', sets: [false, false, false] },
-        { id: 'c3', name: 'Mesa Flexora', weight: '50 - 55 kg', reps: '8 - 12', sets: [false, false, false] },
-        { id: 'c4', name: 'Desenvolvimento Máquina', weight: '15 - 20 kg', reps: '8 - 12', sets: [false, false, false] },
-        { id: 'c5', name: 'Elevação Lateral', weight: '6 kg/halter', reps: '8 - 12', sets: [false, false, false] },
-        { id: 'c6', name: 'Peck Deck Inverso', weight: '25 - 30 kg', reps: '8 - 12', sets: [false, false, false] }
+        "Leg Press 45°", "Agachamento Livre", "Agachamento Hack", "Cadeira Extensora", 
+        "Mesa Flexora", "Cadeira Flexora", "Stiff com Halteres", "Passada / Avanço", 
+        "Desenvolvimento Máquina", "Desenvolvimento Halteres", "Elevação Lateral", 
+        "Elevação Lateral Crossover", "Peck Deck Inverso"
       ]
     };
 
-    const tabConfig = {
-      A: { name: 'Costas & Bíceps', color: '#3B82F6', activeClass: 'tab-active-A', badgeBg: 'bg-blue-500/10 text-blue-400 border-blue-500/20' },
-      B: { name: 'Peito & Tríceps', color: '#F97316', activeClass: 'tab-active-B', badgeBg: 'bg-orange-500/10 text-orange-400 border-orange-500/20' },
-      C: { name: 'Perna & Ombro', color: '#10B981', activeClass: 'tab-active-C', badgeBg: 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20' }
+    const defaultData = {
+      A: [
+        { id: 1, name: "Puxada Frontal Aberta", weight: "40-45 kg", reps: "8-12", done: [false, false, false] },
+        { id: 2, name: "Remada Baixa Triângulo", weight: "15-20 kg", reps: "8-12", done: [false, false, false] },
+        { id: 3, name: "Puxada Fechada Supinada", weight: "40-45 kg", reps: "8-12", done: [false, false, false] },
+        { id: 4, name: "Remada Curvada com Barra", weight: "15-20 kg", reps: "8-12", done: [false, false, false] },
+        { id: 5, name: "Rosca Scott Barra W", weight: "10 kg/lado", reps: "8-12", done: [false, false, false] },
+        { id: 6, name: "Rosca Direta Barra", weight: "10 kg/lado", reps: "8-12", done: [false, false, false] },
+        { id: 7, name: "Rosca Martelo", weight: "10 kg/lado", reps: "8-12", done: [false, false, false] }
+      ],
+      B: [
+        { id: 1, name: "Supino Reto Barra", weight: "16-18 kg/lado", reps: "8-12", done: [false, false, false] },
+        { id: 2, name: "Supino Inclinado Máquina", weight: "25-30 kg", reps: "8-12", done: [false, false, false] },
+        { id: 3, name: "Peck Deck (Crucifixo)", weight: "35-40 kg", reps: "8-12", done: [false, false, false] },
+        { id: 4, name: "Tríceps Pulley", weight: "25-30 kg", reps: "8-12", done: [false, false, false] },
+        { id: 5, name: "Tríceps Corda", weight: "20-25 kg", reps: "8-12", done: [false, false, false] },
+        { id: 6, name: "Tríceps Testa Barra W", weight: "8-10 kg/lado", reps: "8-12", done: [false, false, false] }
+      ],
+      C: [
+        { id: 1, name: "Leg Press 45°", weight: "130-140 kg", reps: "8-12", done: [false, false, false] },
+        { id: 2, name: "Cadeira Extensora", weight: "50-55 kg", reps: "8-12", done: [false, false, false] },
+        { id: 3, name: "Mesa Flexora", weight: "50-55 kg", reps: "8-12", done: [false, false, false] },
+        { id: 4, name: "Desenvolvimento Máquina", weight: "15-20 kg", reps: "8-12", done: [false, false, false] },
+        { id: 5, name: "Elevação Lateral", weight: "6 kg/halter", reps: "8-12", done: [false, false, false] },
+        { id: 6, name: "Peck Deck Inverso", weight: "25-30 kg", reps: "8-12", done: [false, false, false] }
+      ]
     };
 
-    let currentTab = 'A';
-    let workoutData = {};
+    let workoutData = JSON.parse(localStorage.getItem('workout_data_v3')) || defaultData;
+    let activeSwap = null;
 
-    window.onload = function() {
-      loadState();
-      switchTab('A');
+    function saveData() {
+      localStorage.setItem('workout_data_v3', JSON.stringify(workoutData));
+      Aqui está o código completo do **`index.html`** da **Fase 2**, já configurado com a paleta em preto/cinza, o sistema de substituição com 10 variações por exercício, o ícone para a tela inicial do iPhone e a integração direta com o GitHub via Token de Acesso (PAT):
+
+```html
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Ficha de Treino - Gabriel</title>
+  
+  <!-- Configurações PWA / iOS -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Meu Treino">
+  <meta name="theme-color" content="#05070A">
+
+  <!-- Favicon e Apple Touch Icon (Vetor SVG Preto/Cinza) -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='[http://www.w3.org/2000/svg](http://www.w3.org/2000/svg)' viewBox='0 0 512 512'%3E%3Crect width='512' height='512' rx='120' fill='%2305070A'/%3E%3Cpath d='M120 180h40v152h-40zM352 180h40v152h-40zM160 210h30v92h-30zM322 210h30v92h-30zM190 240h132v32H190z' fill='%2394A3B8'/%3E%3Ccircle cx='256' cy='256' r='200' fill='none' stroke='%231E293B' stroke-width='16'/%3E%3C/svg%3E">
+  <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='[http://www.w3.org/2000/svg](http://www.w3.org/2000/svg)' viewBox='0 0 512 512'%3E%3Crect width='512' height='512' rx='120' fill='%2305070A'/%3E%3Cpath d='M120 180h40v152h-40zM352 180h40v152h-40zM160 210h30v92h-30zM322 210h30v92h-30zM190 240h132v32H190z' fill='%2394A3B8'/%3E%3Ccircle cx='256' cy='256' r='200' fill='none' stroke='%231E293B' stroke-width='16'/%3E%3C/svg%3E">
+
+  <style>
+    :root {
+      --bg-main: #05070A;
+      --bg-card: #0F172A;
+      --bg-input: #1E293B;
+      --border-subtle: #1E293B;
+      --border-accent: #334155;
+      --text-main: #F8FAFC;
+      --text-muted: #94A3B8;
+      --text-dim: #64748B;
+      
+      --accent-a: #3B82F6;
+      --accent-b: #F97316;
+      --accent-c: #10B981;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      background-color: var(--bg-main);
+      color: var(--text-main);
+      padding-bottom: 90px;
+      padding-top: env(safe-area-inset-top);
+      min-height: 100vh;
+    }
+
+    header {
+      padding: 16px 16px 12px;
+      background: rgba(5, 7, 10, 0.95);
+      backdrop-filter: blur(10px);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .header-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+
+    .header-title h1 {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    .header-title p {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    .header-actions {
+      display: flex;
+      gap: 8px;
+    }
+
+    .btn-icon {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-muted);
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      cursor: pointer;
+    }
+
+    .nav-tabs {
+      display: flex;
+      gap: 8px;
+      background: #0B0F17;
+      padding: 4px;
+      border-radius: 12px;
+      border: 1px solid var(--border-subtle);
+    }
+
+    .tab-btn {
+      flex: 1;
+      padding: 10px 0;
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      font-weight: 600;
+      font-size: 0.85rem;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .tab-btn.active[data-target="A"] { background: var(--bg-card); color: var(--accent-a); border: 1px solid rgba(59, 130, 246, 0.3); }
+    .tab-btn.active[data-target="B"] { background: var(--bg-card); color: var(--accent-b); border: 1px solid rgba(249, 115, 22, 0.3); }
+    .tab-btn.active[data-target="C"] { background: var(--bg-card); color: var(--accent-c); border: 1px solid rgba(16, 185, 129, 0.3); }
+
+    main {
+      padding: 16px;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .tab-content { display: none; }
+    .tab-content.active { display: block; }
+
+    .exercise-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 14px;
+      padding: 16px;
+      margin-bottom: 12px;
+    }
+
+    .exercise-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+
+    .exercise-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text-main);
+    }
+
+    .btn-swap {
+      background: var(--bg-input);
+      border: 1px solid var(--border-accent);
+      color: var(--text-muted);
+      padding: 4px 8px;
+      border-radius: 6px;
+      font-size: 0.75rem;
+      cursor: pointer;
+    }
+
+    .controls-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .control-box {
+      background: #0B0F17;
+      border: 1px solid var(--border-subtle);
+      border-radius: 10px;
+      padding: 8px 10px;
+    }
+
+    .control-label {
+      font-size: 0.68rem;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      font-weight: 600;
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .control-inputs {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .btn-step {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-main);
+      width: 28px;
+      height: 28px;
+      border-radius: 6px;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    .val-display {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    .sets-row {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      border-top: 1px dashed var(--border-subtle);
+      padding-top: 12px;
+    }
+
+    .set-check {
+      flex: 1;
+      height: 34px;
+      background: #0B0F17;
+      border: 1px solid var(--border-subtle);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--text-dim);
+      cursor: pointer;
+    }
+
+    .set-check.done {
+      background: var(--bg-input);
+      color: var(--text-main);
+      border-color: var(--border-accent);
+    }
+
+    .btn-remove {
+      background: transparent;
+      border: none;
+      color: var(--text-dim);
+      font-size: 0.8rem;
+      padding: 4px;
+      cursor: pointer;
+    }
+
+    /* Modais */
+    .modal-overlay {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.85);
+      backdrop-filter: blur(6px);
+      z-index: 100;
+      display: none;
+      align-items: flex-end;
+      justify-content: center;
+    }
+
+    .modal-card {
+      background: var(--bg-card);
+      border-top: 1px solid var(--border-accent);
+      border-radius: 20px 20px 0 0;
+      padding: 20px;
+      width: 100%;
+      max-width: 500px;
+      max-height: 80vh;
+      overflow-y: auto;
+    }
+
+    .modal-card h3 {
+      font-size: 1rem;
+      margin-bottom: 12px;
+      color: var(--text-main);
+    }
+
+    .modal-card input {
+      width: 100%;
+      background: #0B0F17;
+      border: 1px solid var(--border-subtle);
+      padding: 10px;
+      border-radius: 8px;
+      color: var(--text-main);
+      margin-bottom: 10px;
+    }
+
+    .swap-option {
+      padding: 12px;
+      background: #0B0F17;
+      border: 1px solid var(--border-subtle);
+      border-radius: 8px;
+      margin-bottom: 8px;
+      font-size: 0.85rem;
+      color: var(--text-main);
+      cursor: pointer;
+    }
+
+    .swap-option:active {
+      border-color: var(--border-accent);
+    }
+
+    .btn-action {
+      width: 100%;
+      padding: 12px;
+      background: var(--bg-input);
+      border: 1px solid var(--border-accent);
+      color: var(--text-main);
+      font-weight: 600;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 8px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="header-top">
+      <div class="header-title">
+        <h1>Ficha de Treino</h1>
+        <p id="github-status">Salvo localmente</p>
+      </div>
+      <div class="header-actions">
+        <button class="btn-icon" onclick="openGithubModal()">⚙️</button>
+      </div>
+    </div>
+
+    <nav class="nav-tabs">
+      <button class="tab-btn active" data-target="A" onclick="switchTab('A')">TREINO A</button>
+      <button class="tab-btn" data-target="B" onclick="switchTab('B')">TREINO B</button>
+      <button class="tab-btn" data-target="C" onclick="switchTab('C')">TREINO C</button>
+    </nav>
+  </header>
+
+  <main>
+    <section id="tab-A" class="tab-content active"><div id="list-A"></div></section>
+    <section id="tab-B" class="tab-content"><div id="list-B"></div></section>
+    <section id="tab-C" class="tab-content"><div id="list-C"></div></section>
+  </main>
+
+  <!-- Modal Substituição de Exercícios -->
+  <div id="swap-modal" class="modal-overlay" onclick="closeSwapModal()">
+    <div class="modal-card" onclick="event.stopPropagation()">
+      <h3 id="swap-title">Substituir Exercício</h3>
+      <div id="swap-options-list"></div>
+      <button class="btn-action" onclick="closeSwapModal()">Cancelar</button>
+    </div>
+  </div>
+
+  <!-- Modal Configuração GitHub PAT -->
+  <div id="github-modal" class="modal-overlay" onclick="closeGithubModal()">
+    <div class="modal-card" onclick="event.stopPropagation()">
+      <h3>Configurar Sincronização GitHub</h3>
+      <input type="text" id="gh-user" placeholder="Usuário GitHub (ex: iempyt)">
+      <input type="text" id="gh-repo" placeholder="Repositório (ex: meu-treino)">
+      <input type="text" id="gh-path" placeholder="Caminho do Ficheiro (ex: workout-data.json)">
+      <input type="password" id="gh-token" placeholder="Personal Access Token (PAT)">
+      <button class="btn-action" onclick="saveGithubConfig()">Guardar Configuração</button>
+      <button class="btn-action" style="background: transparent; border: none; color: var(--text-dim);" onclick="closeGithubModal()">Fechar</button>
+    </div>
+  </div>
+
+  <script>
+    // Banco de Variações de Exercícios (Mínimo 10 Opções por Grupo Muscular)
+    const exerciseBank = {
+      costas: [
+        "Puxada Frontal Aberta", "Puxada Articulada", "Pulldown na Polia", "Puxada Triângulo",
+        "Remada Curvada com Barra", "Remada Cavaleiro", "Remada Unilateral com Halter (Serrote)",
+        "Remada Articulada Pegada Pronada", "Pullover na Polia Alta", "Lat Pulldown no Crossover"
+      ],
+      biceps: [
+        "Rosca Scott Barra W", "Rosca Direta Barra", "Rosca Martelo com Halteres", "Rosca 45° no Banco",
+        "Rosca Concentrada", "Rosca Spider na Barra", "Rosca Martelo na Polia", "Rosca Inversa Barra W",
+        "Rosca 21 com Barra", "Rosca Unilateral na Polia"
+      ],
+      peito: [
+        "Supino Reto Barra", "Supino Inclinado Máquina", "Peck Deck (Crucifixo)", "Supino Reto com Halteres",
+        "Supino Inclinado com Halteres", "Crucifixo Inclinado no Crossover", "Flexão de Braço (com Peso)",
+        "Dips (Paralelas para Peito)", "Supino Declinado na Máquina", "Crossover Polia Alta"
+      ],
+      triceps: [
+        "Tríceps Pulley", "Tríceps Corda", "Tríceps Testa com Barra W", "Tríceps Francês com Halter",
+        "Tríceps Coice na Polia", "Tríceps Paralelas na Máquina", "Tríceps Testa com Halteres",
+        "Tríceps Inverso na Polia", "Supino Pegada Fechada", "Tríceps Supino Máquina"
+      ],
+      pernas: [
+        "Leg Press 45°", "Cadeira Extensora", "Mesa Flexora", "Agachamento Livre com Barra",
+        "Agachamento Hack", "Agachamento Sumô", "Passada / Avanço com Halteres", "Stiff com Halteres",
+        "Elevação Pélvica", "Cadeira Flexora"
+      ],
+      ombros: [
+        "Desenvolvimento Máquina", "Elevação Lateral com Halteres", "Peck Deck Inverso",
+        "Desenvolvimento com Halteres", "Elevação Lateral no Crossover", "Elevação Frontal com Halter",
+        "Remada Alta na Polia", "Crucifixo Inverso no Crossover", "Desenvolvimento Arnold", "Encolhimento com Halteres"
+      ]
     };
 
-    function loadState() {
-      const saved = localStorage.getItem('workout_v3_dark');
-      if (saved) {
-        try {
-          workoutData = JSON.parse(saved);
-        } catch(e) {
-          workoutData = JSON.parse(JSON.stringify(defaultData));
+    const defaultData = {
+      A: [
+        { id: 1, name: "Puxada Frontal Aberta", group: "costas", weight: "40 kg", reps: "8-12", done: [false, false, false] },
+        { id: 2, name: "Remada Baixa Triângulo", group: "costas", weight: "15 kg", reps: "8-12", done: [false, false, false] },
+        { id: 3, name: "Puxada Fechada Supinada", group: "costas", weight: "40 kg", reps: "8-12", done: [false, false, false] },
+        { id: 4, name: "Remada Curvada / Maq.", group: "costas", weight: "15 kg", reps: "8-12", done: [false, false, false] },
+        { id: 5, name: "Rosca Scott Barra W", group: "biceps", weight: "10 kg/lado", reps: "8-12", done: [false, false, false] },
+        { id: 6, name: "Rosca Direta Barra", group: "biceps", weight: "10 kg/lado", reps: "8-12", done: [false, false, false] },
+        { id: 7, name: "Rosca Martelo", group: "biceps", weight: "10 kg/lado", reps: "8-12", done: [false, false, false] }
+      ],
+      B: [
+        { id: 1, name: "Supino Reto Barra", group: "peito", weight: "16 kg/lado", reps: "8-12", done: [false, false, false] },
+        { id: 2, name: "Supino Inclinado Máquina", group: "peito", weight: "25 kg", reps: "8-12", done: [false, false, false] },
+        { id: 3, name: "Peck Deck (Crucifixo)", group: "peito", weight: "35 kg", reps: "8-12", done: [false, false, false] },
+        { id: 4, name: "Tríceps Pulley", group: "triceps", weight: "25 kg", reps: "8-12", done: [false, false, false] },
+        { id: 5, name: "Tríceps Corda", group: "triceps", weight: "20 kg", reps: "8-12", done: [false, false, false] },
+        { id: 6, name: "Tríceps Testa", group: "triceps", weight: "8 kg/lado", reps: "8-12", done: [false, false, false] }
+      ],
+      C: [
+        { id: 1, name: "Leg Press 45°", group: "pernas", weight: "130 kg", reps: "8-12", done: [false, false, false] },
+        { id: 2, name: "Cadeira Extensora", group: "pernas", weight: "50 kg", reps: "8-12", done: [false, false, false] },
+        { id: 3, name: "Mesa Flexora", group: "pernas", weight: "50 kg", reps: "8-12", done: [false, false, false] },
+        { id: 4, name: "Desenvolvimento Máquina", group: "ombros", weight: "15 kg", reps: "8-12", done: [false, false, false] },
+        { id: 5, name: "Elevação Lateral", group: "ombros", weight: "6 kg/halter", reps: "8-12", done: [false, false, false] },
+        { id: 6, name: "Peck Deck Inverso", group: "ombros", weight: "25 kg", reps: "8-12", done: [false, false, false] }
+      ]
+    };
+
+    let workoutData = JSON.parse(localStorage.getItem('workout_data_v3')) || defaultData;
+    let ghConfig = JSON.parse(localStorage.getItem('gh_config')) || {};
+    let activeSwapTarget = null;
+
+    function saveData() {
+      localStorage.setItem('workout_data_v3', JSON.stringify(workoutData));
+      syncWithGithub();
+    }
+
+    async function syncWithGithub() {
+      if (!ghConfig.token || !ghConfig.user || !ghConfig.repo || !ghConfig.path) return;
+      
+      const statusEl = document.getElementById('github-status');
+      statusEl.innerText = "A sincronizar no GitHub...";
+
+      try {
+        const url = `[https://api.github.com/repos/$](https://api.github.com/repos/$){ghConfig.user}/${ghConfig.repo}/contents/${ghConfig.path}`;
+        
+        let sha = "";
+        const getRes = await fetch(url, {
+          headers: { Authorization: `token ${ghConfig.token}` }
+        });
+        if (getRes.ok) {
+          const getData = await getRes.json();
+          sha = getData.sha;
         }
-      } else {
-        workoutData = JSON.parse(JSON.stringify(defaultData));
+
+        const content = btoa(unescape(encodeURIComponent(JSON.stringify(workoutData, null, 2))));
+        const putRes = await fetch(url, {
+          method: 'PUT',
+          headers: {
+            Authorization: `token ${ghConfig.token}`,
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            message: 'Update treino via Web App iPhone',
+            content: content,
+            sha: sha || undefined
+          })
+        });
+
+        if (putRes.ok) {
+          statusEl.innerText = "Sincronizado no GitHub ✓";
+        } else {
+          statusEl.innerText = "Erro na sincronização";
+        }
+      } catch (err) {
+        statusEl.innerText = "Erro na ligação ao GitHub";
       }
     }
 
-    function saveState() {
-      localStorage.setItem('workout_v3_dark', JSON.stringify(workoutData));
+    function switchTab(tabKey) {
+      document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+      document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+
+      document.querySelector(`.tab-btn[data-target="${tabKey}"]`).classList.add('active');
+      document.getElementById(`tab-${tabKey}`).classList.add('active');
     }
 
-    function switchTab(tab) {
-      currentTab = tab;
+    function renderList(tabKey) {
+      const container = document.getElementById(`list-${tabKey}`);
+      container.innerHTML = '';
 
-      // Reset Tab Styles
-      ['A', 'B', 'C'].forEach(t => {
-        const btn = document.getElementById(`tab${t}`);
-        btn.className = 'py-2.5 rounded-xl font-bold text-xs border border-transparent transition-all duration-200 flex flex-col items-center justify-center text-slate-400 hover:text-slate-200';
-      });
+      workoutData[tabKey].forEach((item, index) => {
+        const card = document.createElement('div');
+        card.className = 'exercise-card';
+        card.innerHTML = `
+          <div class="exercise-header">
+            <span class="exercise-title">${item.name}</span>
+            <button class="btn-swap" onclick="openSwapModal('${tabKey}', ${index})">🔀 Trocar</button>
+          </div>
 
-      // Active Tab
-      const activeBtn = document.getElementById(`tab${tab}`);
-      activeBtn.className = `py-2.5 rounded-xl font-bold text-xs border transition-all duration-200 flex flex-col items-center justify-center ${tabConfig[tab].activeClass}`;
+          <div class="controls-grid">
+            <div class="control-box">
+              <span class="control-label">Carga</span>
+              <div class="control-inputs">
+                <button class="btn-step" onclick="updateVal('${tabKey}', ${index}, 'weight', -2)">-</button>
+                <span class="val-display">${item.weight}</span>
+                <button class="btn-step" onclick="updateVal('${tabKey}', ${index}, 'weight', 2)">+</button>
+              </div>
+            </div>
 
-      // Update Header Text & Badge
-      document.getElementById('headerSubtitle').textContent = tabConfig[tab].name;
-      const badge = document.getElementById('workoutBadge');
-      badge.textContent = `Treino ${tab}`;
-      badge.className = `text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full border transition-all duration-300 ${tabConfig[tab].badgeBg}`;
-      
-      document.getElementById('headerIcon').style.color = tabConfig[tab].color;
+            <div class="control-box">
+              <span class="control-label">Reps Meta</span>
+              <div class="control-inputs">
+                <button class="btn-step" onclick="updateVal('${tabKey}', ${index}, 'reps', -1)">-</button>
+                <span class="val-display">${item.reps}</span>
+                <button class="btn-step" onclick="updateVal('${tabKey}', ${index}, 'reps', 1)">+</button>
+              </div>
+            </div>
+          </div>
 
-      renderList();
-    }
-
-    function renderList() {
-      const container = document.getElementById('exerciseList');
-      const list = workoutData[currentTab] || [];
-      const config = tabConfig[currentTab];
-
-      let completedCount = 0;
-
-      if (list.length === 0) {
-        container.innerHTML = `
-          <div class="text-center py-10 bg-cardBg rounded-2xl border border-dashed border-cardBorder">
-            <i class="ph-bold ph-barbell text-3xl text-slate-600 mb-2"></i>
-            <p class="text-xs font-semibold text-slate-400">Nenhum exercício neste treino</p>
-            <button onclick="openModal('addModal')" class="mt-2 text-xs font-bold text-white underline">Adicionar Exercício</button>
+          <div class="sets-row">
+            ${item.done.map((isDone, setIdx) => `
+              <div class="set-check ${isDone ? 'done' : ''}" onclick="toggleSet('${tabKey}', ${index}, ${setIdx})">
+                Série ${setIdx + 1}
+              </div>
+            `).join('')}
+            <button class="btn-remove" onclick="removeExercise('${tabKey}', ${index})">✕</button>
           </div>
         `;
+        container.appendChild(card);
+      });
+    }
+
+    function updateVal(tabKey, itemIdx, field, delta) {
+      let current = workoutData[tabKey][itemIdx][field];
+      let num = parseInt(current) || 0;
+      let next = Math.max(1, num + delta);
+      
+      if (field === 'weight') {
+        workoutData[tabKey][itemIdx][field] = current.includes('kg/lado') ? `${next} kg/lado` : `${next} kg`;
       } else {
-        container.innerHTML = list.map((item, index) => {
-          const isAllDone = item.sets.every(Boolean);
-          if (isAllDone) completedCount++;
-
-          return `
-            <div class="bg-cardBg border ${isAllDone ? 'border-emerald-500/40 bg-emerald-950/10' : 'border-cardBorder'} rounded-2xl p-3.5 shadow-sm transition-all">
-              
-              <!-- Card Header -->
-              <div class="flex items-center justify-between mb-2.5">
-                <div class="flex items-center gap-2">
-                  <span class="w-2 h-2 rounded-full" style="background-color: ${config.color}"></span>
-                  <h3 class="text-xs font-bold text-white leading-tight">${item.name}</h3>
-                </div>
-                <button onclick="deleteExercise('${item.id}')" class="text-slate-500 hover:text-rose-400 p-1 text-xs transition">
-                  <i class="ph-bold ph-trash"></i>
-                </button>
-              </div>
-
-              <!-- Quick Control Box -->
-              <div class="grid grid-cols-2 gap-2 mb-3">
-                <!-- Carga -->
-                <div class="bg-charcoal/80 border border-cardBorder rounded-xl p-2 flex items-center justify-between">
-                  <span class="text-[9px] uppercase font-bold text-slate-400">Carga</span>
-                  <div class="flex items-center gap-1.5">
-                    <button onclick="adjustVal('${item.id}', 'weight', -2)" class="w-5 h-5 rounded bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold text-xs flex items-center justify-center">-</button>
-                    <span class="text-xs font-bold text-white">${item.weight}</span>
-                    <button onclick="adjustVal('${item.id}', 'weight', 2)" class="w-5 h-5 rounded bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold text-xs flex items-center justify-center">+</button>
-                  </div>
-                </div>
-
-                <!-- Reps -->
-                <div class="bg-charcoal/80 border border-cardBorder rounded-xl p-2 flex items-center justify-between">
-                  <span class="text-[9px] uppercase font-bold text-slate-400">Reps Meta</span>
-                  <div class="flex items-center gap-1.5">
-                    <button onclick="adjustVal('${item.id}', 'reps', -1)" class="w-5 h-5 rounded bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold text-xs flex items-center justify-center">-</button>
-                    <span class="text-xs font-bold text-white">${item.reps}</span>
-                    <button onclick="adjustVal('${item.id}', 'reps', 1)" class="w-5 h-5 rounded bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold text-xs flex items-center justify-center">+</button>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Checkbox Series -->
-              <div class="grid grid-cols-3 gap-2">
-                ${item.sets.map((done, setIdx) => `
-                  <button onclick="toggleSet('${item.id}', ${setIdx})" class="py-1.5 rounded-xl border font-bold text-xs flex items-center justify-center gap-1 transition ${
-                    done 
-                      ? 'bg-slate-800 text-white border-slate-600 shadow-sm' 
-                      : 'bg-charcoal text-slate-400 border-cardBorder hover:border-slate-700'
-                  }" style="${done ? `border-color: ${config.color}; color: ${config.color}` : ''}">
-                    <i class="ph-bold ${done ? 'ph-check-circle text-sm' : 'ph-circle text-sm'}"></i>
-                    <span>Série ${setIdx + 1}</span>
-                  </button>
-                `).join('')}
-              </div>
-
-            </div>
-          `;
-        }).join('');
+        workoutData[tabKey][itemIdx][field] = `${next}`;
       }
 
-      // Progress Update
-      const total = list.length;
-      const percent = total > 0 ? Math.round((completedCount / total) * 100) : 0;
-      document.getElementById('progressText').textContent = `${completedCount} / ${total} Exercícios Concluídos`;
-      document.getElementById('progressPercent').textContent = `${percent}%`;
-
-      const circle = document.getElementById('progressCircle');
-      circle.style.stroke = config.color;
-      const circumference = 113;
-      const offset = circumference - (percent / 100) * circumference;
-      circle.style.strokeDashoffset = offset;
+      saveData();
+      renderList(tabKey);
     }
 
-    function toggleSet(id, setIdx) {
-      const item = workoutData[currentTab].find(x => x.id === id);
-      if (item) {
-        item.sets[setIdx] = !item.sets[setIdx];
-        saveState();
-        renderList();
+    function toggleSet(tabKey, itemIdx, setIdx) {
+      workoutData[tabKey][itemIdx].done[setIdx] = !workoutData[tabKey][itemIdx].done[setIdx];
+      saveData();
+      renderList(tabKey);
+    }
+
+    function removeExercise(tabKey, index) {
+      workoutData[tabKey].splice(index, 1);
+      saveData();
+      renderList(tabKey);
+    }
+
+    // Modal de Substituição
+    function openSwapModal(tabKey, index) {
+      activeSwapTarget = { tabKey, index };
+      const item = workoutData[tabKey][index];
+      const group = item.group || 'costas';
+      const options = exerciseBank[group] || exerciseBank['costas'];
+
+      document.getElementById('swap-title').innerText = `Substituir: ${item.name}`;
+      const listContainer = document.getElementById('swap-options-list');
+      listContainer.innerHTML = '';
+
+      options.forEach(opt => {
+        const div = document.createElement('div');
+        div.className = 'swap-option';
+        div.innerText = opt;
+        div.onclick = () => selectSwapOption(opt);
+        listContainer.appendChild(div);
+      });
+
+      document.getElementById('swap-modal').style.display = 'flex';
+    }
+
+    function selectSwapOption(newName) {
+      if (activeSwapTarget) {
+        const { tabKey, index } = activeSwapTarget;
+        workoutData[tabKey][index].name = newName;
+        saveData();
+        renderList(tabKey);
       }
+      closeSwapModal();
     }
 
-    function adjustVal(id, field, delta) {
-      const item = workoutData[currentTab].find(x => x.id === id);
-      if (!item) return;
-
-      const str = item[field];
-      const match = str.match(/\d+/);
-      if (match) {
-        let num = parseInt(match[0], 10) + delta;
-        if (num < 1) num = 1;
-        item[field] = str.replace(/\d+/, num);
-        saveState();
-        renderList();
-      }
+    function closeSwapModal() {
+      document.getElementById('swap-modal').style.display = 'none';
     }
 
-    function deleteExercise(id) {
-      workoutData[currentTab] = workoutData[currentTab].filter(x => x.id !== id);
-      saveState();
-      renderList();
+    // Modal GitHub Config
+    function openGithubModal() {
+      document.getElementById('gh-user').value = ghConfig.user || '';
+      document.getElementById('gh-repo').value = ghConfig.repo || '';
+      document.getElementById('gh-path').value = ghConfig.path || 'workout-data.json';
+      document.getElementById('gh-token').value = ghConfig.token || '';
+      document.getElementById('github-modal').style.display = 'flex';
     }
 
-    function resetCurrentSets() {
-      if (workoutData[currentTab]) {
-        workoutData[currentTab].forEach(x => x.sets = [false, false, false]);
-        saveState();
-        renderList();
-      }
-    }
-
-    function handleAddExercise(e) {
-      e.preventDefault();
-      const name = document.getElementById('addName').value.trim();
-      const weight = document.getElementById('addWeight').value.trim();
-      const reps = document.getElementById('addReps').value.trim();
-
-      if (!name) return;
-
-      const newEx = {
-        id: 'ex_' + Date.now(),
-        name,
-        weight: weight || '10 kg',
-        reps: reps || '8 - 12',
-        sets: [false, false, false]
+    function saveGithubConfig() {
+      ghConfig = {
+        user: document.getElementById('gh-user').value.trim(),
+        repo: document.getElementById('gh-repo').value.trim(),
+        path: document.getElementById('gh-path').value.trim(),
+        token: document.getElementById('gh-token').value.trim()
       };
-
-      if (!workoutData[currentTab]) workoutData[currentTab] = [];
-      workoutData[currentTab].push(newEx);
-
-      saveState();
-      renderList();
-      closeModal('addModal');
-      document.getElementById('addForm').reset();
+      localStorage.setItem('gh_config', JSON.stringify(ghConfig));
+      closeGithubModal();
+      syncWithGithub();
     }
 
-    function openModal(id) {
-      if (id === 'addModal') {
-        document.getElementById('modalTabTitle').textContent = `Treino ${currentTab}`;
-        document.getElementById('modalTabTitle').style.color = tabConfig[currentTab].color;
-      }
-      document.getElementById(id).classList.remove('hidden');
+    function closeGithubModal() {
+      document.getElementById('github-modal').style.display = 'none';
     }
 
-    function closeModal(id) {
-      document.getElementById(id).classList.add('hidden');
-    }
+    // Render Inicial
+    ['A', 'B', 'C'].forEach(renderList);
+    if (ghConfig.token) document.getElementById('github-status').innerText = "Ligado ao GitHub";
   </script>
 </body>
 </html>
