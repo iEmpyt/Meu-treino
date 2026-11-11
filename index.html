@@ -2,481 +2,185 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-  <title>Meu Treino ABC 2x</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Ficha de Treino - Gabriel</title>
   
-  <!-- iOS Mobile Web App Tags -->
+  <!-- Configurações para iOS PWA -->
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="apple-mobile-web-app-title" content="Meu Treino">
-  <meta name="theme-color" content="#0F172A">
-  <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='25' fill='%230F172A'/><path d='M30 65 L40 35 L50 65 M40 52 L50 52' stroke='%23A855F7' stroke-width='8' stroke-linecap='round'/><path d='M60 35 L75 35 C80 35 83 38 83 42 C83 46 80 49 75 49 L60 49 L60 65' stroke='%2338BDF8' stroke-width='8' stroke-linecap='round' fill='none'/></svg>">
+  <meta name="theme-color" content="#0B0F17">
 
-  <!-- Manifest Data URI for PWA -->
-  <link rel="manifest" href="data:application/manifest+json;base64,ewogICJuYW1lIjogIk1ldSBUcmVpbm8gQUJDIDJ4IiwKICAic2hvcnRfbmFtZSI6ICJNZXUgVHJlaW5vIiwKICAic3RhcnRfdXJsIjogIi4iLAogICJkaXNwbGF5IjogInN0YW5kYWxvbmUiLAogICJiYWNrZ3JvdW5kX2NvbG9yIjogIiMwRjE3MkEiLAogICJ0aGVtZV9jb2xvciI6ICIjMEYxNzJBIgp9">
-
-  <!-- Tailwind CSS & Phosphor Icons -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://unpkg.com/@phosphor-icons/web"></script>
-  
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            brand: {
-              purple: '#A855F7',
-              cyan: '#38BDF8',
-              accent: '#6366F1',
-              dark: '#0F172A',
-              card: '#1E293B',
-              cardBorder: '#334155'
-            }
-          }
-        }
-      }
-    }
-  </script>
+  <!-- Favicon e Apple Touch Icon (SVG Inline Base64 em Preto/Cinza) -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Crect width='512' height='512' rx='120' fill='%230B0F17'/%3E%3Cpath d='M120 180h40v152h-40zM352 180h40v152h-40zM160 210h30v92h-30zM322 210h30v92h-30zM190 240h132v32H190z' fill='%2394A3B8'/%3E%3Ccircle cx='256' cy='256' r='200' fill='none' stroke='%23334155' stroke-width='16'/%3E%3C/svg%3E">
+  <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Crect width='512' height='512' rx='120' fill='%230B0F17'/%3E%3Cpath d='M120 180h40v152h-40zM352 180h40v152h-40zM160 210h30v92h-30zM322 210h30v92h-30zM190 240h132v32H190z' fill='%2394A3B8'/%3E%3Ccircle cx='256' cy='256' r='200' fill='none' stroke='%23334155' stroke-width='16'/%3E%3C/svg%3E">
 
   <style>
-    /* iOS App Feel Adjustments */
-    body {
+    :root {
+      --bg-main: #0B0F17;
+      --bg-card: #141C2B;
+      --bg-card-hover: #1E293B;
+      --bg-input: #0F172A;
+      --border-subtle: #1E293B;
+      --border-accent: #334155;
+      --text-main: #F8FAFC;
+      --text-muted: #94A3B8;
+      --text-dim: #64748B;
+      
+      --accent-a: #3B82F6; /* Treino A - Azul Sutil */
+      --accent-b: #F97316; /* Treino B - Laranja Sutil */
+      --accent-c: #10B981; /* Treino C - Verde Sutil */
+      --danger: #EF4444;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
       -webkit-tap-highlight-color: transparent;
-      user-select: none;
-      -webkit-user-select: none;
-      touch-action: manipulation;
     }
-    input, textarea {
-      user-select: text;
-      -webkit-user-select: text;
+
+    body {
+      background-color: var(--bg-main);
+      color: var(--text-main);
+      padding-bottom: 90px;
+      padding-top: env(safe-area-inset-top);
+      min-height: 100vh;
     }
-    .safe-top {
-      padding-top: env(safe-area-inset-top, 16px);
+
+    header {
+      padding: 20px 16px 12px;
+      background: rgba(11, 15, 23, 0.95);
+      backdrop-filter: blur(10px);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      border-bottom: 1px solid var(--border-subtle);
     }
-    .safe-bottom {
-      padding-bottom: env(safe-area-inset-bottom, 24px);
+
+    .header-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 14px;
     }
-    /* Custom Scrollbar */
-    ::-webkit-scrollbar {
+
+    .header-title h1 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      color: var(--text-main);
+    }
+
+    .header-title p {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    .btn-icon {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-muted);
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      cursor: pointer;
+    }
+
+    /* Tabs de Treino */
+    .nav-tabs {
+      display: flex;
+      gap: 8px;
+      background: var(--bg-input);
+      padding: 4px;
+      border-radius: 12px;
+      border: 1px solid var(--border-subtle);
+    }
+
+    .tab-btn {
+      flex: 1;
+      padding: 10px 0;
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      font-weight: 600;
+      font-size: 0.85rem;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .tab-btn.active[data-target="A"] {
+      background: var(--bg-card);
+      color: var(--accent-a);
+      border: 1px solid rgba(59, 130, 246, 0.3);
+    }
+
+    .tab-btn.active[data-target="B"] {
+      background: var(--bg-card);
+      color: var(--accent-b);
+      border: 1px solid rgba(249, 115, 22, 0.3);
+    }
+
+    .tab-btn.active[data-target="C"] {
+      background: var(--bg-card);
+      color: var(--accent-c);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+    }
+
+    main {
+      padding: 16px;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .tab-content {
       display: none;
     }
-  </style>
-</head>
-<body class="bg-brand-dark text-slate-100 font-sans antialiased min-h-screen flex flex-col justify-between selection:bg-brand-purple">
 
-  <!-- Top Navigation Header -->
-  <header class="bg-slate-900/80 backdrop-blur-md border-b border-slate-800 sticky top-0 z-30 safe-top">
-    <div class="px-4 py-3 flex items-center justify-between max-w-md mx-auto">
-      <div class="flex items-center gap-2">
-        <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-brand-purple to-brand-cyan flex items-center justify-center text-slate-900 font-black text-xl shadow-lg shadow-purple-500/20">
-          <i class="ph-bold ph-barbell"></i>
-        </div>
-        <div>
-          <h1 class="text-base font-bold leading-tight text-white flex items-center gap-1.5">
-            Meu Treino <span class="text-xs font-semibold px-2 py-0.5 rounded-full bg-purple-500/20 text-brand-purple border border-purple-500/30">ABC 2x</span>
-          </h1>
-          <p class="text-xs text-slate-400" id="headerSubtitle">Costas & Bíceps</p>
-        </div>
-      </div>
-      
-      <!-- iOS Install Guide Button -->
-      <button onclick="openModal('installModal')" class="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-xs font-medium text-brand-cyan transition active:scale-95">
-        <i class="ph-bold ph-export text-sm"></i>
-        <span>Instalar iOS</span>
-      </button>
-    </div>
-
-    <!-- Tabs Navigation -->
-    <div class="px-4 pt-1 pb-3 max-w-md mx-auto">
-      <div class="grid grid-cols-3 gap-2 bg-slate-950 p-1 rounded-2xl border border-slate-800/80">
-        <button onclick="switchTab('A')" id="tabA" class="tab-btn active py-2.5 rounded-xl font-bold text-xs flex flex-col items-center justify-center transition-all bg-gradient-to-r from-purple-600 to-indigo-600 text-white shadow-md shadow-purple-600/30">
-          <span>TREINO A</span>
-          <span class="text-[10px] opacity-80 font-normal">Costas / Bíceps</span>
-        </button>
-        <button onclick="switchTab('B')" id="tabB" class="tab-btn py-2.5 rounded-xl font-bold text-xs flex flex-col items-center justify-center transition-all text-slate-400 hover:text-slate-200">
-          <span>TREINO B</span>
-          <span class="text-[10px] opacity-80 font-normal">Peito / Tríceps</span>
-        </button>
-        <button onclick="switchTab('C')" id="tabC" class="tab-btn py-2.5 rounded-xl font-bold text-xs flex flex-col items-center justify-center transition-all text-slate-400 hover:text-slate-200">
-          <span>TREINO C</span>
-          <span class="text-[10px] opacity-80 font-normal">Perna / Ombro</span>
-        </button>
-      </div>
-    </div>
-  </header>
-
-  <!-- Main Workout Area -->
-  <main class="flex-1 px-4 py-4 max-w-md mx-auto w-full pb-24">
-    
-    <!-- Action Bar & Progress Summary -->
-    <div class="flex items-center justify-between mb-4 bg-slate-900/60 p-3 rounded-2xl border border-slate-800">
-      <div>
-        <div class="text-xs text-slate-400">Progresso do Dia</div>
-        <div class="text-sm font-bold text-white flex items-center gap-2">
-          <span id="progressText">0 / 0 Concluídos</span>
-          <span class="text-xs px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 font-normal hidden" id="doneBadge">Concluído! 🎉</span>
-        </div>
-      </div>
-      <div class="flex items-center gap-2">
-        <button onclick="resetCurrentWorkout()" title="Reiniciar marcas do dia" class="w-9 h-9 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-300 flex items-center justify-center transition active:scale-95">
-          <i class="ph-bold ph-arrow-counter-clockwise"></i>
-        </button>
-        <button onclick="openModal('addModal')" class="h-9 px-3.5 rounded-xl bg-brand-purple hover:bg-purple-600 text-slate-950 font-bold text-xs flex items-center gap-1.5 transition active:scale-95 shadow-lg shadow-purple-500/25">
-          <i class="ph-bold ph-plus"></i>
-          <span>Novo Exercício</span>
-        </button>
-      </div>
-    </div>
-
-    <!-- Workout Cards Container -->
-    <div id="exerciseList" class="space-y-3.5">
-      <!-- Cards rendered via JavaScript -->
-    </div>
-  </main>
-
-  <!-- Floating Add Button (Mobile Quick Access) -->
-  <div class="fixed bottom-6 right-5 z-20 md:hidden safe-bottom">
-    <button onclick="openModal('addModal')" class="w-14 h-14 rounded-full bg-gradient-to-tr from-brand-purple to-indigo-600 text-slate-950 font-bold flex items-center justify-center shadow-xl shadow-purple-500/40 text-2xl active:scale-90 transition">
-      <i class="ph-bold ph-plus text-slate-950"></i>
-    </button>
-  </div>
-
-  <!-- Modal: Adicionar Novo Exercício -->
-  <div id="addModal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 hidden flex items-end sm:items-center justify-center p-0 sm:p-4 transition-opacity">
-    <div class="bg-slate-900 border border-slate-800 w-full max-w-md rounded-t-3xl sm:rounded-3xl p-6 shadow-2xl space-y-4 animate-in fade-in slide-in-from-bottom duration-200">
-      <div class="flex justify-between items-center border-b border-slate-800 pb-3">
-        <h3 class="text-base font-bold text-white flex items-center gap-2">
-          <i class="ph-bold ph-barbell text-brand-purple"></i>
-          Adicionar Exercício
-        </h3>
-        <button onclick="closeModal('addModal')" class="text-slate-400 hover:text-white p-1">
-          <i class="ph-bold ph-x text-lg"></i>
-        </button>
-      </div>
-
-      <form id="addForm" onsubmit="handleAddExercise(event)" class="space-y-3.5">
-        <div>
-          <label class="block text-xs font-semibold text-slate-400 mb-1">Nome do Exercício</label>
-          <input type="text" id="addName" required placeholder="Ex: Remada Cavaleiro" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-3 text-sm text-white placeholder-slate-600 focus:outline-none focus:border-brand-purple transition">
-        </div>
-
-        <div class="grid grid-cols-2 gap-3">
-          <div>
-            <label class="block text-xs font-semibold text-slate-400 mb-1">Carga (Descrição/kg)</label>
-            <input type="text" id="addWeight" required placeholder="Ex: 15kg/lado ou 40kg" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-3 text-sm text-white placeholder-slate-600 focus:outline-none focus:border-brand-purple transition">
-          </div>
-          <div>
-            <label class="block text-xs font-semibold text-slate-400 mb-1">Repetições / Meta</label>
-            <input type="text" id="addReps" required placeholder="Ex: 8 - 12 ou 10" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-3 text-sm text-white placeholder-slate-600 focus:outline-none focus:border-brand-purple transition">
-          </div>
-        </div>
-
-        <div>
-          <label class="block text-xs font-semibold text-slate-400 mb-1">Foco / Observação</label>
-          <input type="text" id="addFocus" placeholder="Ex: Foco na descida lenta" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-3 text-sm text-white placeholder-slate-600 focus:outline-none focus:border-brand-purple transition">
-        </div>
-
-        <div class="pt-2 flex gap-2">
-          <button type="button" onclick="closeModal('addModal')" class="w-1/2 py-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold text-xs transition">Cancelar</button>
-          <button type="submit" class="w-1/2 py-3 rounded-xl bg-gradient-to-r from-brand-purple to-indigo-600 text-slate-950 font-bold text-xs shadow-lg shadow-purple-500/20 transition active:scale-95">Salvar Exercício</button>
-        </div>
-      </form>
-    </div>
-  </div>
-
-  <!-- Modal: Guia de Instalação no iPhone -->
-  <div id="installModal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 hidden flex items-end sm:items-center justify-center p-0 sm:p-4">
-    <div class="bg-slate-900 border border-slate-800 w-full max-w-md rounded-t-3xl sm:rounded-3xl p-6 shadow-2xl space-y-4">
-      <div class="flex justify-between items-center border-b border-slate-800 pb-3">
-        <h3 class="text-base font-bold text-white flex items-center gap-2">
-          <i class="ph-bold ph-apple-logo text-brand-cyan"></i>
-          Instalar no iPhone (Safari)
-        </h3>
-        <button onclick="closeModal('installModal')" class="text-slate-400 hover:text-white p-1">
-          <i class="ph-bold ph-x text-lg"></i>
-        </button>
-      </div>
-
-      <div class="space-y-3.5 text-xs text-slate-300">
-        <p class="text-slate-400">Você pode transformar esta página em um aplicativo nativo no seu iPhone sem pagar nada nem usar App Store:</p>
-        
-        <div class="flex items-start gap-3 bg-slate-950 p-3 rounded-xl border border-slate-800">
-          <div class="w-7 h-7 rounded-lg bg-slate-800 text-brand-cyan flex items-center justify-center font-bold text-sm shrink-0">1</div>
-          <div>
-            <div class="font-bold text-white mb-0.5">Abra no Safari</div>
-            <div class="text-slate-400">Certifique-se de estar usando o navegador Safari do iOS.</div>
-          </div>
-        </div>
-
-        <div class="flex items-start gap-3 bg-slate-950 p-3 rounded-xl border border-slate-800">
-          <div class="w-7 h-7 rounded-lg bg-slate-800 text-brand-purple flex items-center justify-center font-bold text-sm shrink-0">2</div>
-          <div>
-            <div class="font-bold text-white mb-0.5">Toque em Compartilhar</div>
-            <div class="text-slate-400">Toque no ícone de compartilhamento <i class="ph-bold ph-export text-brand-cyan"></i> na barra inferior do Safari.</div>
-          </div>
-        </div>
-
-        <div class="flex items-start gap-3 bg-slate-950 p-3 rounded-xl border border-slate-800">
-          <div class="w-7 h-7 rounded-lg bg-slate-800 text-emerald-400 flex items-center justify-center font-bold text-sm shrink-0">3</div>
-          <div>
-            <div class="font-bold text-white mb-0.5">Adicionar à Tela de Início</div>
-            <div class="text-slate-400">Role o menu para baixo e selecione <b>"Adicionar à Tela de Início"</b> (Add to Home Screen).</div>
-          </div>
-        </div>
-      </div>
-
-      <button onclick="closeModal('installModal')" class="w-full py-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-bold text-xs transition">Entendi!</button>
-    </div>
-  </div>
-
-  <!-- JavaScript App Logic -->
-  <script>
-    // Initial Workout Data (Medically Optimized ABC 2x)
-    const initialData = {
-      A: [
-        { id: 'a1', name: 'Lat Pulldown (Pegada Aberta)', weight: '45kg', reps: '10', focus: 'Dorsal (Largura)', done: false },
-        { id: 'a2', name: 'Remada Sentada (Pegada Aberta)', weight: '20kg', reps: '10', focus: 'Miolo das costas / Rombóides', done: false },
-        { id: 'a3', name: 'Lat Pulldown (Pegada em V)', weight: '45kg', reps: '10', focus: 'Dorsal Inferior', done: false },
-        { id: 'a4', name: 'Remada Sentada (Pegada Fechada)', weight: '20kg', reps: '10', focus: 'Espessura geral do dorsal', done: false },
-        { id: 'a5', name: 'Rosca Scott (Barra W)', weight: '10kg/lado', reps: '10', focus: 'Bíceps (Isolamento / Pico)', done: false },
-        { id: 'a6', name: 'Rosca Direta (Barra)', weight: '10kg/lado', reps: '10', focus: 'Bíceps (Volume geral)', done: false },
-        { id: 'a7', name: 'Rosca Martelo (Barra)', weight: '10kg/lado', reps: '10', focus: 'Braquial e Antebraço', done: false }
-      ],
-      B: [
-        { id: 'b1', name: 'Supino Inclinado (Máquina)', weight: '30kg', reps: '10', focus: 'Peitoral Superior', done: false },
-        { id: 'b2', name: 'Supino Reto (Barra Livre)', weight: '18kg/lado', reps: '10', focus: 'Peitoral Geral / Carga', done: false },
-        { id: 'b3', name: 'Crucifixo (Cabo ou Máquina)', weight: '30kg', reps: '10', focus: 'Peitoral (Isolamento concêntrico)', done: false },
-        { id: 'b4', name: 'Tríceps no Cabo (Barrinha)', weight: '20kg', reps: '10', focus: 'Tríceps (Cabeça Lateral)', done: false },
-        { id: 'b5', name: 'Tríceps no Cabo (Corda)', weight: '20kg', reps: '10', focus: 'Tríceps (Cabeça Longa/Medial)', done: false },
-        { id: 'b6', name: 'Tríceps Francês (Halter)', weight: '8kg', reps: '10', focus: 'Tríceps (Alongamento)', done: false }
-      ],
-      C: [
-        { id: 'c1', name: 'Leg Press Inclinado', weight: '140kg', reps: '10', focus: 'Quadríceps e Glúteos', done: false },
-        { id: 'c2', name: 'Cadeira Extensora', weight: '55kg', reps: '10', focus: 'Quadríceps (Isolamento)', done: false },
-        { id: 'c3', name: 'Cadeira Flexora', weight: '55kg', reps: '10', focus: 'Posterior de Coxa', done: false },
-        { id: 'c4', name: 'Flexora Unilateral (em pé)', weight: '5kg', reps: '10', focus: 'Posterior (Isolamento)', done: false },
-        { id: 'c5', name: 'Cadeira Adutora / Abdutora', weight: '40kg', reps: '10', focus: 'Adutores / Glúteo Médio', done: false },
-        { id: 'c6', name: 'Elevação Lateral (Halteres)', weight: '6kg/lado', reps: '10', focus: 'Ombro Lateral (Deltoide)', done: false },
-        { id: 'c7', name: 'Crucifixo Inverso (Peck Deck)', weight: '30kg', reps: '10', focus: 'Ombro Posterior / Manguito', done: false }
-      ]
-    };
-
-    // State Variables
-    let currentTab = 'A';
-    let workoutData = {};
-
-    // Subtitle Mapping
-    const tabSubtitles = {
-      A: 'Costas & Bíceps',
-      B: 'Peito & Tríceps',
-      C: 'Perna & Ombro'
-    };
-
-    // Initialize App
-    window.onload = function() {
-      loadState();
-      renderWorkout();
-    };
-
-    // LocalStorage Logic
-    function loadState() {
-      const saved = localStorage.getItem('myWorkoutData');
-      if (saved) {
-        try {
-          workoutData = JSON.parse(saved);
-        } catch(e) {
-          workoutData = JSON.parse(JSON.stringify(initialData));
-        }
-      } else {
-        workoutData = JSON.parse(JSON.stringify(initialData));
-      }
+    .tab-content.active {
+      display: block;
     }
 
-    function saveState() {
-      localStorage.setItem('myWorkoutData', JSON.stringify(workoutData));
+    /* Card de Exercício */
+    .exercise-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 14px;
+      padding: 16px;
+      margin-bottom: 12px;
+      transition: border-color 0.2s;
     }
 
-    // Render Cards for Selected Workout Tab
-    function renderWorkout() {
-      const container = document.getElementById('exerciseList');
-      const list = workoutData[currentTab] || [];
-      document.getElementById('headerSubtitle').textContent = tabSubtitles[currentTab];
-
-      let completedCount = 0;
-
-      if (list.length === 0) {
-        container.innerHTML = `
-          <div class="text-center py-10 bg-slate-900/40 rounded-2xl border border-dashed border-slate-800">
-            <i class="ph-bold ph-barbell text-4xl text-slate-600 mb-2"></i>
-            <p class="text-sm font-semibold text-slate-400">Nenhum exercício neste treino</p>
-            <button onclick="openModal('addModal')" class="mt-3 text-xs text-brand-purple font-bold underline">Adicionar o primeiro</button>
-          </div>
-        `;
-      } else {
-        container.innerHTML = list.map((item, index) => {
-          if (item.done) completedCount++;
-
-          return `
-            <div class="bg-brand-card border ${item.done ? 'border-emerald-500/40 bg-emerald-950/10' : 'border-brand-cardBorder'} rounded-2xl p-4 transition-all duration-200 relative shadow-sm">
-              
-              <!-- Card Header -->
-              <div class="flex items-start justify-between gap-3 mb-2.5">
-                <div class="flex items-start gap-2.5">
-                  <button onclick="toggleDone('${item.id}')" class="mt-0.5 w-6 h-6 rounded-lg border ${item.done ? 'bg-emerald-500 border-emerald-500 text-slate-950' : 'border-slate-600 hover:border-brand-purple text-transparent'} flex items-center justify-center transition shrink-0">
-                    <i class="ph-bold ph-check text-sm font-black"></i>
-                  </button>
-                  <div>
-                    <h4 class="text-sm font-bold ${item.done ? 'line-through text-slate-400' : 'text-white'} leading-tight">
-                      ${item.name}
-                    </h4>
-                    ${item.focus ? `<p class="text-[11px] text-slate-400 mt-0.5">${item.focus}</p>` : ''}
-                  </div>
-                </div>
-
-                <!-- Reorder & Actions -->
-                <div class="flex items-center gap-1 shrink-0">
-                  <button onclick="moveItem(${index}, -1)" ${index === 0 ? 'disabled class="opacity-30"' : ''} class="w-7 h-7 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 flex items-center justify-center text-xs">
-                    <i class="ph-bold ph-caret-up"></i>
-                  </button>
-                  <button onclick="moveItem(${index}, 1)" ${index === list.length - 1 ? 'disabled class="opacity-30"' : ''} class="w-7 h-7 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 flex items-center justify-center text-xs">
-                    <i class="ph-bold ph-caret-down"></i>
-                  </button>
-                  <button onclick="deleteExercise('${item.id}')" class="w-7 h-7 rounded-lg bg-slate-800/80 hover:bg-rose-500/20 hover:text-rose-400 text-slate-400 flex items-center justify-center text-xs transition ml-1">
-                    <i class="ph-bold ph-trash"></i>
-                  </button>
-                </div>
-              </div>
-
-              <!-- Quick Editable Fields (Weight & Reps) -->
-              <div class="grid grid-cols-2 gap-2 mt-3 pt-3 border-t border-slate-800/60">
-                <div class="bg-slate-950/60 rounded-xl px-3 py-2 border border-slate-800 flex items-center justify-between">
-                  <span class="text-[10px] uppercase font-bold text-slate-500 flex items-center gap-1">
-                    <i class="ph-bold ph-weight text-brand-purple"></i> Carga
-                  </span>
-                  <input type="text" value="${item.weight}" onchange="updateExercise('${item.id}', 'weight', this.value)" class="w-24 bg-transparent text-right font-bold text-xs text-white border-b border-transparent hover:border-brand-purple focus:border-brand-purple focus:outline-none transition">
-                </div>
-
-                <div class="bg-slate-950/60 rounded-xl px-3 py-2 border border-slate-800 flex items-center justify-between">
-                  <span class="text-[10px] uppercase font-bold text-slate-500 flex items-center gap-1">
-                    <i class="ph-bold ph-arrows-clockwise text-brand-cyan"></i> Reps
-                  </span>
-                  <input type="text" value="${item.reps}" onchange="updateExercise('${item.id}', 'reps', this.value)" class="w-20 bg-transparent text-right font-bold text-xs text-white border-b border-transparent hover:border-brand-cyan focus:border-brand-cyan focus:outline-none transition">
-                </div>
-              </div>
-
-            </div>
-          `;
-        }).join('');
-      }
-
-      // Update Header Progress
-      document.getElementById('progressText').textContent = `${completedCount} / ${list.length} Concluídos`;
-      const badge = document.getElementById('doneBadge');
-      if (completedCount > 0 && completedCount === list.length) {
-        badge.classList.remove('hidden');
-      } else {
-        badge.classList.add('hidden');
-      }
+    .exercise-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 12px;
     }
 
-    // Tab Switching
-    function switchTab(tab) {
-      currentTab = tab;
-      document.querySelectorAll('.tab-btn').forEach(btn => {
-        btn.className = 'tab-btn py-2.5 rounded-xl font-bold text-xs flex flex-col items-center justify-center transition-all text-slate-400 hover:text-slate-200';
-      });
-
-      const activeBtn = document.getElementById(`tab${tab}`);
-      activeBtn.className = 'tab-btn active py-2.5 rounded-xl font-bold text-xs flex flex-col items-center justify-center transition-all bg-gradient-to-r from-brand-purple to-indigo-600 text-slate-950 shadow-md shadow-purple-600/30 font-black';
-
-      renderWorkout();
+    .exercise-title {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text-main);
+      margin-bottom: 4px;
     }
 
-    // Toggle Done Checkmark
-    function toggleDone(id) {
-      const item = workoutData[currentTab].find(x => x.id === id);
-      if (item) {
-        item.done = !item.done;
-        saveState();
-        renderWorkout();
-      }
+    .exercise-badge {
+      font-size: 0.7rem;
+      font-weight: 600;
+      padding: 2px 8px;
+      border-radius: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
     }
 
-    // Update Weight or Reps directly
-    function updateExercise(id, field, value) {
-      const item = workoutData[currentTab].find(x => x.id === id);
-      if (item) {
-        item[field] = value;
-        saveState();
-      }
-    }
-
-    // Delete Exercise
-    function deleteExercise(id) {
-      workoutData[currentTab] = workoutData[currentTab].filter(x => x.id !== id);
-      saveState();
-      renderWorkout();
-    }
-
-    // Move Exercise Up/Down
-    function moveItem(index, direction) {
-      const list = workoutData[currentTab];
-      const targetIndex = index + direction;
-      if (targetIndex < 0 || targetIndex >= list.length) return;
-
-      const temp = list[index];
-      list[index] = list[targetIndex];
-      list[targetIndex] = temp;
-
-      saveState();
-      renderWorkout();
-    }
-
-    // Reset Day Completed Marks
-    function resetCurrentWorkout() {
-      if (workoutData[currentTab]) {
-        workoutData[currentTab].forEach(x => x.done = false);
-        saveState();
-        renderWorkout();
-      }
-    }
-
-    // Handle Form Add New Exercise
-    function handleAddExercise(e) {
-      e.preventDefault();
-      const name = document.getElementById('addName').value.trim();
-      const weight = document.getElementById('addWeight').value.trim();
-      const reps = document.getElementById('addReps').value.trim();
-      const focus = document.getElementById('addFocus').value.trim();
-
-      if (!name || !weight || !reps) return;
-
-      const newEx = {
-        id: 'ex_' + Date.now(),
-        name,
-        weight,
-        reps,
-        focus: focus || 'Geral',
-        done: false
-      };
-
-      if (!workoutData[currentTab]) workoutData[currentTab] = [];
-      workoutData[currentTab].push(newEx);
-
-      saveState();
-      renderWorkout();
-      closeModal('addModal');
-      document.getElementById('addForm').reset();
-    }
-
-    // Modal Helpers
-    function openModal(id) {
-      document.getElementById(id).classList.remove('hidden');
-    }
-
-    function closeModal(id) {
-      document.getElementById(id).classList.add('hidden');
-    }
-  </script>
-</body>
-</html>
+    .badge-a { background: rgba(59, 130, 246, 0.15); color: var(--accent-a); }
+    .badge-b { background: rgba(249, 115, 22, 0.15); color: var(--accent-b); }
+    .badge-c { background: rgba(16, 185, 129, 0.
