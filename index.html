@@ -183,4 +183,386 @@
 
     .badge-a { background: rgba(59, 130, 246, 0.15); color: var(--accent-a); }
     .badge-b { background: rgba(249, 115, 22, 0.15); color: var(--accent-b); }
-    .badge-c { background: rgba(16, 185, 129, 0.
+    .badge-c { background: rgba(16, 185, 129, 0.15); color: var(--accent-c); }
+
+    /* Controles de Carga e Reps */
+    .controls-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .control-box {
+      background: var(--bg-input);
+      border: 1px solid var(--border-subtle);
+      border-radius: 10px;
+      padding: 8px 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .control-label {
+      font-size: 0.7rem;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+
+    .control-inputs {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .btn-step {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-main);
+      width: 28px;
+      height: 28px;
+      border-radius: 6px;
+      font-size: 1.1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+
+    .btn-step:active {
+      background: var(--border-accent);
+    }
+
+    .val-display {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    /* Grid de Séries (Checkboxes) */
+    .sets-row {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      border-top: 1px dashed var(--border-subtle);
+      padding-top: 12px;
+    }
+
+    .set-check {
+      flex: 1;
+      height: 34px;
+      background: var(--bg-input);
+      border: 1px solid var(--border-subtle);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--text-dim);
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .set-check.done {
+      background: #1E293B;
+      color: #F8FAFC;
+      border-color: #475569;
+    }
+
+    .btn-remove {
+      background: transparent;
+      border: none;
+      color: var(--text-dim);
+      font-size: 0.8rem;
+      padding: 4px;
+      cursor: pointer;
+    }
+
+    /* Modal / Form Adicionar Exercício */
+    .add-box {
+      margin-top: 16px;
+      padding: 14px;
+      background: var(--bg-card);
+      border: 1px dashed var(--border-accent);
+      border-radius: 14px;
+    }
+
+    .add-box input {
+      width: 100%;
+      background: var(--bg-input);
+      border: 1px solid var(--border-subtle);
+      padding: 10px 12px;
+      border-radius: 8px;
+      color: var(--text-main);
+      font-size: 0.9rem;
+      margin-bottom: 10px;
+    }
+
+    .add-box input:focus {
+      outline: none;
+      border-color: var(--border-accent);
+    }
+
+    .btn-add {
+      width: 100%;
+      padding: 10px;
+      background: var(--bg-input);
+      border: 1px solid var(--border-accent);
+      color: var(--text-main);
+      font-weight: 600;
+      font-size: 0.85rem;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    /* Modal iOS Install Guide */
+    .modal-overlay {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.8);
+      backdrop-filter: blur(5px);
+      z-index: 100;
+      display: none;
+      align-items: flex-end;
+      justify-content: center;
+    }
+
+    .modal-card {
+      background: var(--bg-card);
+      border-top: 1px solid var(--border-accent);
+      border-radius: 20px 20px 0 0;
+      padding: 24px 20px 40px;
+      width: 100%;
+      max-width: 500px;
+    }
+
+    .modal-card h3 {
+      font-size: 1.1rem;
+      margin-bottom: 12px;
+      color: var(--text-main);
+    }
+
+    .modal-card ol {
+      padding-left: 20px;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="header-top">
+      <div class="header-title">
+        <h1>Ficha de Treino</h1>
+        <p>Hipertrofia & Sobrecarga Controlada</p>
+      </div>
+      <button class="btn-icon" onclick="toggleGuide()">ⓘ</button>
+    </div>
+
+    <nav class="nav-tabs">
+      <button class="tab-btn active" data-target="A" onclick="switchTab('A')">TREINO A</button>
+      <button class="tab-btn" data-target="B" onclick="switchTab('B')">TREINO B</button>
+      <button class="tab-btn" data-target="C" onclick="switchTab('C')">TREINO C</button>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Treino A -->
+    <section id="tab-A" class="tab-content active">
+      <div id="list-A"></div>
+      <div class="add-box">
+        <input type="text" id="input-name-A" placeholder="Novo Exercício (ex: Puxada Triângulo)">
+        <input type="text" id="input-weight-A" placeholder="Carga Inicial (ex: 45 kg)">
+        <button class="btn-add" onclick="addExercise('A')">+ Adicionar ao Treino A</button>
+      </div>
+    </section>
+
+    <!-- Treino B -->
+    <section id="tab-B" class="tab-content">
+      <div id="list-B"></div>
+      <div class="add-box">
+        <input type="text" id="input-name-B" placeholder="Novo Exercício (ex: Crossover)">
+        <input type="text" id="input-weight-B" placeholder="Carga Inicial (ex: 15 kg)">
+        <button class="btn-add" onclick="addExercise('B')">+ Adicionar ao Treino B</button>
+      </div>
+    </section>
+
+    <!-- Treino C -->
+    <section id="tab-C" class="tab-content">
+      <div id="list-C"></div>
+      <div class="add-box">
+        <input type="text" id="input-name-C" placeholder="Novo Exercício (ex: Agachamento)">
+        <input type="text" id="input-weight-C" placeholder="Carga Inicial (ex: 60 kg)">
+        <button class="btn-add" onclick="addExercise('C')">+ Adicionar ao Treino C</button>
+      </div>
+    </section>
+  </main>
+
+  <!-- Modal Guia iOS -->
+  <div id="guide-modal" class="modal-overlay" onclick="toggleGuide()">
+    <div class="modal-card" onclick="event.stopPropagation()">
+      <h3>Como Instalar no iPhone (Safari)</h3>
+      <ol>
+        <li>Toque no botão <strong>Compartilhar</strong> (quadrado com seta pra cima no menu do Safari).</li>
+        <li>Role para baixo e selecione <strong>Adicionar à Tela de Início</strong>.</li>
+        <li>Pronto! O app abrirá como um aplicativo nativo e rápido na sua Home Screen.</li>
+      </ol>
+      <button class="btn-add" style="margin-top: 20px;" onclick="toggleGuide()">Entendido</button>
+    </div>
+  </div>
+
+  <script>
+    // Dados Iniciais Baseados na Prescrição Médica
+    const defaultData = {
+      A: [
+        { id: 1, name: "Puxada Frontal Aberta", weight: "40-45 kg", reps: "8-12", sets: 3, done: [false, false, false] },
+        { id: 2, name: "Remada Baixa Triângulo", weight: "15-20 kg", reps: "8-12", sets: 3, done: [false, false, false] },
+        { id: 3, name: "Puxada Fechada Supinada", weight: "40-45 kg", reps: "8-12", sets: 3, done: [false, false, false] },
+        { id: 4, name: "Remada Curvada / Maq.", weight: "15-20 kg", reps: "8-12", sets: 3, done: [false, false, false] },
+        { id: 5, name: "Rosca Scott Barra W", weight: "10 kg/lado", reps: "8-12", sets: 3, done: [false, false, false] },
+        { id: 6, name: "Rosca Direta Barra", weight: "10 kg/lado", reps: "8-12", sets: 3, done: [false, false, false] },
+        { id: 7, name: "Rosca Martelo", weight: "10 kg/lado", reps: "8-12", sets: 3, done: [false, false, false] }
+      ],
+      B: [
+        { id: 1, name: "Supino Reto Barra", weight: "16-18 kg/lado", reps: "8-12", sets: 3, done: [false, false, false] },
+        { id: 2, name: "Supino Inclinado Máquina", weight: "25-30 kg", reps: "8-12", sets: 3, done: [false, false, false] },
+        { id: 3, name: "Peck Deck (Crucifixo)", weight: "35-40 kg", reps: "8-12", sets: 3, done: [false, false, false] },
+        { id: 4, name: "Tríceps Pulley", weight: "25-30 kg", reps: "8-12", sets: 3, done: [false, false, false] },
+        { id: 5, name: "Tríceps Corda", weight: "20-25 kg", reps: "8-12", sets: 3, done: [false, false, false] },
+        { id: 6, name: "Tríceps Testa", weight: "8-10 kg/lado", reps: "8-12", sets: 3, done: [false, false, false] }
+      ],
+      C: [
+        { id: 1, name: "Leg Press 45°", weight: "130-140 kg", reps: "8-12", sets: 3, done: [false, false, false] },
+        { id: 2, name: "Cadeira Extensora", weight: "50-55 kg", reps: "8-12", sets: 3, done: [false, false, false] },
+        { id: 3, name: "Mesa Flexora", weight: "50-55 kg", reps: "8-12", sets: 3, done: [false, false, false] },
+        { id: 4, name: "Desenvolvimento Máquina", weight: "15-20 kg", reps: "8-12", sets: 3, done: [false, false, false] },
+        { id: 5, name: "Elevação Lateral", weight: "6 kg/halter", reps: "8-12", sets: 3, done: [false, false, false] },
+        { id: 6, name: "Peck Deck Inverso", weight: "25-30 kg", reps: "8-12", sets: 3, done: [false, false, false] }
+      ]
+    };
+
+    let workoutData = JSON.parse(localStorage.getItem('workout_data_v2')) || defaultData;
+
+    function saveData() {
+      localStorage.setItem('workout_data_v2', JSON.stringify(workoutData));
+    }
+
+    function switchTab(tabKey) {
+      document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+      document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+
+      document.querySelector(`.tab-btn[data-target="${tabKey}"]`).classList.add('active');
+      document.getElementById(`tab-${tabKey}`).classList.add('active');
+    }
+
+    function renderList(tabKey) {
+      const container = document.getElementById(`list-${tabKey}`);
+      container.innerHTML = '';
+
+      workoutData[tabKey].forEach((item, index) => {
+        const card = document.createElement('div');
+        card.className = 'exercise-card';
+        card.innerHTML = `
+          <div class="exercise-header">
+            <div>
+              <div class="exercise-title">${item.name}</div>
+            </div>
+            <span class="exercise-badge badge-${tabKey.toLowerCase()}">Treino ${tabKey}</span>
+          </div>
+
+          <div class="controls-grid">
+            <div class="control-box">
+              <span class="control-label">Carga</span>
+              <div class="control-inputs">
+                <button class="btn-step" onclick="updateVal('${tabKey}', ${index}, 'weight', -2)">-</button>
+                <span class="val-display">${item.weight}</span>
+                <button class="btn-step" onclick="updateVal('${tabKey}', ${index}, 'weight', 2)">+</button>
+              </div>
+            </div>
+
+            <div class="control-box">
+              <span class="control-label">Reps Meta</span>
+              <div class="control-inputs">
+                <button class="btn-step" onclick="updateVal('${tabKey}', ${index}, 'reps', -1)">-</button>
+                <span class="val-display">${item.reps}</span>
+                <button class="btn-step" onclick="updateVal('${tabKey}', ${index}, 'reps', 1)">+</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="sets-row">
+            ${item.done.map((isDone, setIdx) => `
+              <div class="set-check ${isDone ? 'done' : ''}" onclick="toggleSet('${tabKey}', ${index}, ${setIdx})">
+                Série ${setIdx + 1}
+              </div>
+            `).join('')}
+            <button class="btn-remove" onclick="removeExercise('${tabKey}', ${index})">✕</button>
+          </div>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    function toggleSet(tabKey, itemIdx, setIdx) {
+      workoutData[tabKey][itemIdx].done[setIdx] = !workoutData[tabKey][itemIdx].done[setIdx];
+      saveData();
+      renderList(tabKey);
+    }
+
+    function updateVal(tabKey, itemIdx, field, delta) {
+      let current = workoutData[tabKey][itemIdx][field];
+      let num = parseInt(current) || 0;
+      let next = Math.max(1, num + delta);
+      
+      if (field === 'weight') {
+        workoutData[tabKey][itemIdx][field] = current.includes('kg/lado') ? `${next} kg/lado` : `${next} kg`;
+      } else {
+        workoutData[tabKey][itemIdx][field] = `${next}`;
+      }
+
+      saveData();
+      renderList(tabKey);
+    }
+
+    function addExercise(tabKey) {
+      const nameInput = document.getElementById(`input-name-${tabKey}`);
+      const weightInput = document.getElementById(`input-weight-${tabKey}`);
+
+      if (!nameInput.value.trim()) return;
+
+      workoutData[tabKey].push({
+        id: Date.now(),
+        name: nameInput.value.trim(),
+        weight: weightInput.value.trim() || "10 kg",
+        reps: "8-12",
+        sets: 3,
+        done: [false, false, false]
+      });
+
+      nameInput.value = '';
+      weightInput.value = '';
+
+      saveData();
+      renderList(tabKey);
+    }
+
+    function removeExercise(tabKey, index) {
+      workoutData[tabKey].splice(index, 1);
+      saveData();
+      renderList(tabKey);
+    }
+
+    function toggleGuide() {
+      const modal = document.getElementById('guide-modal');
+      modal.style.display = modal.style.display === 'flex' ? 'none' : 'flex';
+    }
+
+    // Render Inicial
+    ['A', 'B', 'C'].forEach(renderList);
+  </script>
+</body>
+</html>
