@@ -5,19 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Ficha de Treino - Gabriel</title>
   
-  <!-- Configurações PWA / iOS -->
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="apple-mobile-web-app-title" content="Meu Treino">
   <meta name="theme-color" content="#05070A">
 
-  <!-- Favicon e Apple Touch Icon (Vetor SVG Preto/Cinza) -->
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Crect width='512' height='512' rx='120' fill='%2305070A'/%3E%3Cpath d='M120 180h40v152h-40zM352 180h40v152h-40zM160 210h30v92h-30zM322 210h30v92h-30zM190 240h132v32H190z' fill='%238B949E'/%3E%3Ccircle cx='256' cy='256' r='200' fill='none' stroke='%2330363D' stroke-width='16'/%3E%3C/svg%3E">
   <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Crect width='512' height='512' rx='120' fill='%2305070A'/%3E%3Cpath d='M120 180h40v152h-40zM352 180h40v152h-40zM160 210h30v92h-30zM322 210h30v92h-30zM190 240h132v32H190z' fill='%238B949E'/%3E%3Ccircle cx='256' cy='256' r='200' fill='none' stroke='%2330363D' stroke-width='16'/%3E%3C/svg%3E">
 
   <style>
     :root {
-      --bg-main: #05070A;       /* Preto Profundo Pitch Black */
+      --bg-main: #05070A;       /* Preto Profundo */
       --bg-card: #161B22;       /* Cinza Escuro Grafite */
       --bg-box: #0D1117;        /* Cinza Chumbo Interno */
       --bg-input: #21262D;      /* Cinza de Destaque / Botões */
@@ -85,15 +83,19 @@
     .btn-icon {
       background: var(--bg-card);
       border: 1px solid var(--border-subtle);
-      color: var(--text-muted);
+      color: var(--text-main);
       width: 36px;
       height: 36px;
       border-radius: 10px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 0.9rem;
+      font-size: 1.1rem;
       cursor: pointer;
+    }
+
+    .btn-icon:active {
+      background: var(--bg-input);
     }
 
     .nav-tabs {
@@ -131,7 +133,6 @@
     .tab-content { display: none; }
     .tab-content.active { display: block; }
 
-    /* Cards em Cinza Grafite */
     .exercise-card {
       background: var(--bg-card);
       border: 1px solid var(--border-subtle);
@@ -171,7 +172,6 @@
       margin-bottom: 12px;
     }
 
-    /* Sub-boxes em Cinza Chumbo */
     .control-box {
       background: var(--bg-box);
       border: 1px solid var(--border-subtle);
@@ -247,7 +247,6 @@
       cursor: pointer;
     }
 
-    /* Modais */
     .modal-overlay {
       position: fixed;
       top: 0; left: 0; right: 0; bottom: 0;
@@ -297,10 +296,6 @@
       cursor: pointer;
     }
 
-    .swap-option:active {
-      border-color: var(--border-accent);
-    }
-
     .btn-action {
       width: 100%;
       padding: 12px;
@@ -323,7 +318,8 @@
         <p id="github-status">Salvo localmente</p>
       </div>
       <div class="header-actions">
-        <button class="btn-icon" onclick="openGithubModal()">⚙️</button>
+        <button class="btn-icon" title="Adicionar Exercício" onclick="openAddModal()">＋</button>
+        <button class="btn-icon" title="Configurações GitHub" onclick="openGithubModal()">⚙️</button>
       </div>
     </div>
 
@@ -340,7 +336,16 @@
     <section id="tab-C" class="tab-content"><div id="list-C"></div></section>
   </main>
 
-  <!-- Modal Substituição -->
+  <div id="add-modal" class="modal-overlay" onclick="closeAddModal()">
+    <div class="modal-card" onclick="event.stopPropagation()">
+      <h3 id="add-modal-title">Adicionar Exercício ao Treino</h3>
+      <input type="text" id="new-ex-name" placeholder="Nome do Exercício (ex: Puxada Triângulo)">
+      <input type="text" id="new-ex-weight" placeholder="Carga Inicial (ex: 45 kg)">
+      <button class="btn-action" onclick="confirmAddExercise()">Adicionar Exercício</button>
+      <button class="btn-action" style="background: transparent; border: none; color: var(--text-dim);" onclick="closeAddModal()">Cancelar</button>
+    </div>
+  </div>
+
   <div id="swap-modal" class="modal-overlay" onclick="closeSwapModal()">
     <div class="modal-card" onclick="event.stopPropagation()">
       <h3 id="swap-title">Substituir Exercício</h3>
@@ -349,7 +354,6 @@
     </div>
   </div>
 
-  <!-- Modal GitHub Sync -->
   <div id="github-modal" class="modal-overlay" onclick="closeGithubModal()">
     <div class="modal-card" onclick="event.stopPropagation()">
       <h3>Configurar Sincronização GitHub</h3>
@@ -363,6 +367,8 @@
   </div>
 
   <script>
+    let currentActiveTab = 'A';
+
     const exerciseBank = {
       costas: [
         "Puxada Frontal Aberta", "Puxada Articulada", "Pulldown na Polia", "Puxada Triângulo",
@@ -424,12 +430,12 @@
       ]
     };
 
-    let workoutData = JSON.parse(localStorage.getItem('workout_data_v6')) || defaultData;
+    let workoutData = JSON.parse(localStorage.getItem('workout_data_v7')) || defaultData;
     let ghConfig = JSON.parse(localStorage.getItem('gh_config')) || {};
     let activeSwapTarget = null;
 
     function saveData() {
-      localStorage.setItem('workout_data_v6', JSON.stringify(workoutData));
+      localStorage.setItem('workout_data_v7', JSON.stringify(workoutData));
       syncWithGithub();
     }
 
@@ -476,6 +482,7 @@
     }
 
     function switchTab(tabKey) {
+      currentActiveTab = tabKey;
       document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
       document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
 
@@ -556,6 +563,37 @@
       renderList(tabKey);
     }
 
+    function openAddModal() {
+      document.getElementById('add-modal-title').innerText = `Adicionar ao Treino ${currentActiveTab}`;
+      document.getElementById('new-ex-name').value = '';
+      document.getElementById('new-ex-weight').value = '';
+      document.getElementById('add-modal').style.display = 'flex';
+    }
+
+    function confirmAddExercise() {
+      const name = document.getElementById('new-ex-name').value.trim();
+      const weight = document.getElementById('new-ex-weight').value.trim() || '10 kg';
+
+      if (!name) return;
+
+      workoutData[currentActiveTab].push({
+        id: Date.now(),
+        name: name,
+        group: 'costas',
+        weight: weight,
+        reps: '8-12',
+        done: [false, false, false]
+      });
+
+      saveData();
+      renderList(currentActiveTab);
+      closeAddModal();
+    }
+
+    function closeAddModal() {
+      document.getElementById('add-modal').style.display = 'none';
+    }
+
     function openSwapModal(tabKey, index) {
       activeSwapTarget = { tabKey, index };
       const item = workoutData[tabKey][index];
@@ -615,7 +653,6 @@
       document.getElementById('github-modal').style.display = 'none';
     }
 
-    // Render Inicial
     ['A', 'B', 'C'].forEach(renderList);
     if (ghConfig.token) document.getElementById('github-status').innerText = "Ligado ao GitHub";
   </script>
