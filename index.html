@@ -11,24 +11,26 @@
   <meta name="apple-mobile-web-app-title" content="Meu Treino">
   <meta name="theme-color" content="#05070A">
 
-  <!-- Favicon e Apple Touch Icon (SVG Inline Preto/Cinza) -->
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Crect width='512' height='512' rx='120' fill='%2305070A'/%3E%3Cpath d='M120 180h40v152h-40zM352 180h40v152h-40zM160 210h30v92h-30zM322 210h30v92h-30zM190 240h132v32H190z' fill='%2394A3B8'/%3E%3Ccircle cx='256' cy='256' r='200' fill='none' stroke='%231E293B' stroke-width='16'/%3E%3C/svg%3E">
-  <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Crect width='512' height='512' rx='120' fill='%2305070A'/%3E%3Cpath d='M120 180h40v152h-40zM352 180h40v152h-40zM160 210h30v92h-30zM322 210h30v92h-30zM190 240h132v32H190z' fill='%2394A3B8'/%3E%3Ccircle cx='256' cy='256' r='200' fill='none' stroke='%231E293B' stroke-width='16'/%3E%3C/svg%3E">
+  <!-- Favicon e Apple Touch Icon (Vetor SVG Preto/Cinza) -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Crect width='512' height='512' rx='120' fill='%2305070A'/%3E%3Cpath d='M120 180h40v152h-40zM352 180h40v152h-40zM160 210h30v92h-30zM322 210h30v92h-30zM190 240h132v32H190z' fill='%238B949E'/%3E%3Ccircle cx='256' cy='256' r='200' fill='none' stroke='%2330363D' stroke-width='16'/%3E%3C/svg%3E">
+  <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Crect width='512' height='512' rx='120' fill='%2305070A'/%3E%3Cpath d='M120 180h40v152h-40zM352 180h40v152h-40zM160 210h30v92h-30zM322 210h30v92h-30zM190 240h132v32H190z' fill='%238B949E'/%3E%3Ccircle cx='256' cy='256' r='200' fill='none' stroke='%2330363D' stroke-width='16'/%3E%3C/svg%3E">
 
   <style>
     :root {
-      --bg-main: #05070A;
-      --bg-card: #0F172A;
-      --bg-input: #1E293B;
-      --border-subtle: #1E293B;
-      --border-accent: #334155;
-      --text-main: #F8FAFC;
-      --text-muted: #94A3B8;
-      --text-dim: #64748B;
+      --bg-main: #05070A;       /* Preto Profundo Pitch Black */
+      --bg-card: #161B22;       /* Cinza Escuro Grafite */
+      --bg-box: #0D1117;        /* Cinza Chumbo Interno */
+      --bg-input: #21262D;      /* Cinza de Destaque / Botões */
+      --border-subtle: #30363D;  /* Borda Cinza Neutra */
+      --border-accent: #484F58;  /* Borda de Foco */
       
-      --accent-a: #3B82F6;
-      --accent-b: #F97316;
-      --accent-c: #10B981;
+      --text-main: #F0F6FC;     /* Branco Suave */
+      --text-muted: #8B949E;    /* Cinza Claro */
+      --text-dim: #6E7681;      /* Cinza Médio */
+      
+      --accent-a: #3B82F6;      /* Treino A (Azul) */
+      --accent-b: #F97316;      /* Treino B (Laranja) */
+      --accent-c: #10B981;      /* Treino C (Verde) */
     }
 
     * {
@@ -97,7 +99,7 @@
     .nav-tabs {
       display: flex;
       gap: 8px;
-      background: #0B0F17;
+      background: var(--bg-box);
       padding: 4px;
       border-radius: 12px;
       border: 1px solid var(--border-subtle);
@@ -113,11 +115,12 @@
       font-size: 0.85rem;
       border-radius: 8px;
       cursor: pointer;
+      transition: all 0.2s ease;
     }
 
-    .tab-btn.active[data-target="A"] { background: var(--bg-card); color: var(--accent-a); border: 1px solid rgba(59, 130, 246, 0.3); }
-    .tab-btn.active[data-target="B"] { background: var(--bg-card); color: var(--accent-b); border: 1px solid rgba(249, 115, 22, 0.3); }
-    .tab-btn.active[data-target="C"] { background: var(--bg-card); color: var(--accent-c); border: 1px solid rgba(16, 185, 129, 0.3); }
+    .tab-btn.active[data-target="A"] { background: var(--bg-card); color: var(--accent-a); border: 1px solid var(--accent-a); }
+    .tab-btn.active[data-target="B"] { background: var(--bg-card); color: var(--accent-b); border: 1px solid var(--accent-b); }
+    .tab-btn.active[data-target="C"] { background: var(--bg-card); color: var(--accent-c); border: 1px solid var(--accent-c); }
 
     main {
       padding: 16px;
@@ -128,12 +131,14 @@
     .tab-content { display: none; }
     .tab-content.active { display: block; }
 
+    /* Cards em Cinza Grafite */
     .exercise-card {
       background: var(--bg-card);
       border: 1px solid var(--border-subtle);
       border-radius: 14px;
       padding: 16px;
       margin-bottom: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
     }
 
     .exercise-header {
@@ -151,9 +156,9 @@
 
     .btn-swap {
       background: var(--bg-input);
-      border: 1px solid var(--border-accent);
+      border: 1px solid var(--border-subtle);
       color: var(--text-muted);
-      padding: 4px 8px;
+      padding: 4px 10px;
       border-radius: 6px;
       font-size: 0.75rem;
       cursor: pointer;
@@ -166,8 +171,9 @@
       margin-bottom: 12px;
     }
 
+    /* Sub-boxes em Cinza Chumbo */
     .control-box {
-      background: #0B0F17;
+      background: var(--bg-box);
       border: 1px solid var(--border-subtle);
       border-radius: 10px;
       padding: 8px 10px;
@@ -189,7 +195,7 @@
     }
 
     .btn-step {
-      background: var(--bg-card);
+      background: var(--bg-input);
       border: 1px solid var(--border-subtle);
       color: var(--text-main);
       width: 28px;
@@ -216,7 +222,7 @@
     .set-check {
       flex: 1;
       height: 34px;
-      background: #0B0F17;
+      background: var(--bg-box);
       border: 1px solid var(--border-subtle);
       border-radius: 8px;
       display: flex;
@@ -228,11 +234,9 @@
       cursor: pointer;
     }
 
-    .set-check.done {
-      background: var(--bg-input);
-      color: var(--text-main);
-      border-color: var(--border-accent);
-    }
+    .set-check.done-A { background: rgba(59, 130, 246, 0.2); color: var(--accent-a); border-color: var(--accent-a); }
+    .set-check.done-B { background: rgba(249, 115, 22, 0.2); color: var(--accent-b); border-color: var(--accent-b); }
+    .set-check.done-C { background: rgba(16, 185, 129, 0.2); color: var(--accent-c); border-color: var(--accent-c); }
 
     .btn-remove {
       background: transparent;
@@ -274,7 +278,7 @@
 
     .modal-card input {
       width: 100%;
-      background: #0B0F17;
+      background: var(--bg-box);
       border: 1px solid var(--border-subtle);
       padding: 10px;
       border-radius: 8px;
@@ -284,7 +288,7 @@
 
     .swap-option {
       padding: 12px;
-      background: #0B0F17;
+      background: var(--bg-box);
       border: 1px solid var(--border-subtle);
       border-radius: 8px;
       margin-bottom: 8px;
@@ -336,7 +340,7 @@
     <section id="tab-C" class="tab-content"><div id="list-C"></div></section>
   </main>
 
-  <!-- Modal Substituição de Exercícios -->
+  <!-- Modal Substituição -->
   <div id="swap-modal" class="modal-overlay" onclick="closeSwapModal()">
     <div class="modal-card" onclick="event.stopPropagation()">
       <h3 id="swap-title">Substituir Exercício</h3>
@@ -345,7 +349,7 @@
     </div>
   </div>
 
-  <!-- Modal Configuração GitHub PAT -->
+  <!-- Modal GitHub Sync -->
   <div id="github-modal" class="modal-overlay" onclick="closeGithubModal()">
     <div class="modal-card" onclick="event.stopPropagation()">
       <h3>Configurar Sincronização GitHub</h3>
@@ -359,7 +363,6 @@
   </div>
 
   <script>
-    // Banco de Variações de Exercícios (Mínimo 10 Opções por Grupo Muscular)
     const exerciseBank = {
       costas: [
         "Puxada Frontal Aberta", "Puxada Articulada", "Pulldown na Polia", "Puxada Triângulo",
@@ -421,12 +424,12 @@
       ]
     };
 
-    let workoutData = JSON.parse(localStorage.getItem('workout_data_v4')) || defaultData;
+    let workoutData = JSON.parse(localStorage.getItem('workout_data_v6')) || defaultData;
     let ghConfig = JSON.parse(localStorage.getItem('gh_config')) || {};
     let activeSwapTarget = null;
 
     function saveData() {
-      localStorage.setItem('workout_data_v4', JSON.stringify(workoutData));
+      localStorage.setItem('workout_data_v6', JSON.stringify(workoutData));
       syncWithGithub();
     }
 
@@ -515,7 +518,7 @@
 
           <div class="sets-row">
             ${item.done.map((isDone, setIdx) => `
-              <div class="set-check ${isDone ? 'done' : ''}" onclick="toggleSet('${tabKey}', ${index}, ${setIdx})">
+              <div class="set-check ${isDone ? 'done-' + tabKey : ''}" onclick="toggleSet('${tabKey}', ${index}, ${setIdx})">
                 Série ${setIdx + 1}
               </div>
             `).join('')}
@@ -553,7 +556,6 @@
       renderList(tabKey);
     }
 
-    // Modal de Substituição
     function openSwapModal(tabKey, index) {
       activeSwapTarget = { tabKey, index };
       const item = workoutData[tabKey][index];
@@ -589,7 +591,6 @@
       document.getElementById('swap-modal').style.display = 'none';
     }
 
-    // Modal GitHub Config
     function openGithubModal() {
       document.getElementById('gh-user').value = ghConfig.user || '';
       document.getElementById('gh-repo').value = ghConfig.repo || '';
