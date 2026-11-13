@@ -1,0 +1,236 @@
+{
+  "A": [
+    {
+      "id": 1,
+      "name": "Puxada Frontal Aberta",
+      "group": "costas",
+      "weight": "40 kg",
+      "reps": "8-12",
+      "done": [
+        false,
+        false,
+        false
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Remada Baixa Triângulo",
+      "group": "costas",
+      "weight": "15 kg",
+      "reps": "8-12",
+      "done": [
+        false,
+        false,
+        false
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Puxada Fechada Supinada",
+      "group": "costas",
+      "weight": "40 kg",
+      "reps": "8-12",
+      "done": [
+        false,
+        false,
+        false
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Remada Curvada / Maq.",
+      "group": "costas",
+      "weight": "15 kg",
+      "reps": "8-12",
+      "done": [
+        false,
+        false,
+        false
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Rosca Scott Barra W",
+      "group": "biceps",
+      "weight": "10 kg/lado",
+      "reps": "8-12",
+      "done": [
+        false,
+        false,
+        false
+      ]
+    },
+    {
+      "id": 6,
+      "name": "Rosca Direta Barra",
+      "group": "biceps",
+      "weight": "10 kg/lado",
+      "reps": "8-12",
+      "done": [
+        false,
+        false,
+        false
+      ]
+    },
+    {
+      "id": 7,
+      "name": "Rosca Martelo",
+      "group": "biceps",
+      "weight": "10 kg/lado",
+      "reps": "8-12",
+      "done": [
+        false,
+        false,
+        false
+      ]
+    }
+  ],
+  "B": [
+    {
+      "id": 1,
+      "name": "Supino Reto Barra",
+      "group": "peito",
+      "weight": "16 kg/lado",
+      "reps": "8-12",
+      "done": [
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Supino Inclinado Máquina",
+      "group": "peito",
+      "weight": "25 kg",
+      "reps": "8-12",
+      "done": [
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Peck Deck (Crucifixo)",
+      "group": "peito",
+      "weight": "35 kg",
+      "reps": "8-12",
+      "done": [
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Tríceps Pulley",
+      "group": "triceps",
+      "weight": "25 kg",
+      "reps": "8-12",
+      "done": [
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Tríceps Corda",
+      "group": "triceps",
+      "weight": "20 kg",
+      "reps": "8-12",
+      "done": [
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "id": 6,
+      "name": "Tríceps Francês com Halter",
+      "group": "triceps",
+      "weight": "10 kg/lado",
+      "reps": "8-12",
+      "done": [
+        false,
+        false,
+        false
+      ]
+    }
+  ],
+  "C": [
+    {
+      "id": 1,
+      "name": "Leg Press 45°",
+      "group": "pernas",
+      "weight": "130 kg",
+      "reps": "8-12",
+      "done": [
+        false,
+        false,
+        false
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Cadeira Extensora",
+      "group": "pernas",
+      "weight": "50 kg",
+      "reps": "8-12",
+      "done": [
+        false,
+        false,
+        false
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Mesa Flexora",
+      "group": "pernas",
+      "weight": "50 kg",
+      "reps": "8-12",
+      "done": [
+        false,
+        false,
+        false
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Desenvolvimento Máquina",
+      "group": "ombros",
+      "weight": "15 kg",
+      "reps": "8-12",
+      "done": [
+        false,
+        false,
+        false
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Elevação Lateral",
+      "group": "ombros",
+      "weight": "6 kg/halter",
+      "reps": "8-12",
+      "done": [
+        false,
+        false,
+        false
+      ]
+    },
+    {
+      "id": 6,
+      "name": "Peck Deck Inverso",
+      "group": "ombros",
+      "weight": "25 kg",
+      "reps": "8-12",
+      "done": [
+        false,
+        false,
+        false
+      ]
+    }
+  ]
+}
