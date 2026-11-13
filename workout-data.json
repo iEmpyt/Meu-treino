@@ -155,7 +155,7 @@
       "done": [
         true,
         true,
-        false
+        true
       ]
     }
   ],
@@ -213,18 +213,6 @@
       "name": "Elevação Lateral",
       "group": "ombros",
       "weight": "6 kg/halter",
-      "reps": "8-12",
-      "done": [
-        false,
-        false,
-        false
-      ]
-    },
-    {
-      "id": 6,
-      "name": "Peck Deck Inverso",
-      "group": "ombros",
-      "weight": "25 kg",
       "reps": "8-12",
       "done": [
         false,
