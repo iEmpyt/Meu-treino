@@ -255,6 +255,18 @@
         false,
         false
       ]
+    },
+    {
+      "id": 1794652020618,
+      "name": "Cadeira abdutora",
+      "group": "costas",
+      "weight": "40",
+      "reps": "8-12",
+      "done": [
+        false,
+        false,
+        false
+      ]
     }
   ]
 }
