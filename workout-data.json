@@ -126,7 +126,7 @@
       "id": 3,
       "name": "Peck Deck (Crucifixo)",
       "group": "peito",
-      "weight": "41 kg",
+      "weight": "45 kg",
       "reps": "8-12",
       "done": [
         true,
@@ -162,7 +162,7 @@
       "id": 6,
       "name": "Tríceps Francês com Halter",
       "group": "triceps",
-      "weight": "10 kg/lado",
+      "weight": "12 kg/lado",
       "reps": "8-12",
       "done": [
         true,
