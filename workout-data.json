@@ -231,6 +231,18 @@
         false,
         false
       ]
+    },
+    {
+      "id": 1794651968079,
+      "name": "Panturrilha",
+      "group": "costas",
+      "weight": "45",
+      "reps": "8-12",
+      "done": [
+        false,
+        false,
+        false
+      ]
     }
   ]
 }
