@@ -162,7 +162,7 @@
       "id": 6,
       "name": "Tríceps Francês com Halter",
       "group": "triceps",
-      "weight": "14 kg/lado",
+      "weight": "10 kg/lado",
       "reps": "8-12",
       "done": [
         true,
@@ -176,7 +176,7 @@
       "id": 1,
       "name": "Leg Press 45°",
       "group": "pernas",
-      "weight": "130 kg",
+      "weight": "128 kg",
       "reps": "8-12",
       "done": [
         false,
