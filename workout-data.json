@@ -243,6 +243,18 @@
         false,
         false
       ]
+    },
+    {
+      "id": 1794652001945,
+      "name": "Cadeira adutora",
+      "group": "costas",
+      "weight": "40",
+      "reps": "8-12",
+      "done": [
+        false,
+        false,
+        false
+      ]
     }
   ]
 }
