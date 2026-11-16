@@ -67,9 +67,9 @@
       "weight": "8 kg/lado",
       "reps": "8-12",
       "done": [
-        false,
-        false,
-        false
+        true,
+        true,
+        true
       ]
     },
     {
@@ -79,7 +79,7 @@
       "weight": "8 kg/lado",
       "reps": "8-12",
       "done": [
-        false,
+        true,
         false,
         false
       ]
