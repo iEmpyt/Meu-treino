@@ -7,7 +7,7 @@
       "weight": "40 kg",
       "reps": "8-12",
       "done": [
-        false,
+        true,
         false,
         false
       ]
@@ -236,7 +236,7 @@
       "id": 1794651968079,
       "name": "Panturrilha",
       "group": "costas",
-      "weight": "39 kg",
+      "weight": "41 kg",
       "reps": "8-12",
       "done": [
         false,
