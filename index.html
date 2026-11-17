@@ -135,7 +135,6 @@
     .tab-content { display: none; }
     .tab-content.active { display: block; }
 
-    /* Cards em Cinza Grafite */
     .exercise-card {
       background: var(--bg-card);
       border: 1px solid var(--border-subtle);
@@ -201,7 +200,6 @@
       margin-bottom: 12px;
     }
 
-    /* Sub-boxes em Cinza Chumbo */
     .control-box {
       background: var(--bg-box);
       border: 1px solid var(--border-subtle);
@@ -242,11 +240,6 @@
       cursor: pointer;
       padding: 2px 6px;
       border-radius: 4px;
-      transition: background 0.2s;
-    }
-
-    .val-display:hover {
-      background: var(--bg-input);
     }
 
     .sets-row {
@@ -285,7 +278,6 @@
       cursor: pointer;
     }
 
-    /* Modais */
     .modal-overlay {
       position: fixed;
       top: 0; left: 0; right: 0; bottom: 0;
@@ -314,7 +306,7 @@
       color: var(--text-main);
     }
 
-    .modal-card input {
+    .modal-card input, .modal-card select {
       width: 100%;
       background: var(--bg-box);
       border: 1px solid var(--border-subtle);
@@ -347,7 +339,6 @@
       margin-top: 8px;
     }
 
-    /* Calendário UI */
     .calendar-grid {
       display: grid;
       grid-template-columns: repeat(7, 1fr);
@@ -377,9 +368,9 @@
     }
 
     .calendar-day.trained {
-      background: rgba(16, 185, 129, 0.2);
-      color: var(--accent-c);
-      border: 1px solid var(--accent-c);
+      background: var(--bg-input);
+      color: var(--text-main);
+      border: 1px solid var(--border-accent);
       font-weight: 700;
     }
 
@@ -402,6 +393,7 @@
         <p id="github-status">Salvo localmente</p>
       </div>
       <div class="header-actions">
+        <button class="btn-icon" title="Resetar Treino do Dia" onclick="resetTodayWorkout()">🔄</button>
         <button class="btn-icon" title="Calendário de Treinos" onclick="openCalendarModal()">📅</button>
         <button class="btn-icon" title="Adicionar Exercício" onclick="openAddModal()">＋</button>
         <button class="btn-icon" title="Configurações GitHub" onclick="openGithubModal()">⚙️</button>
@@ -447,7 +439,24 @@
       <h3>Calendário de Treinos</h3>
       <div id="calendar-container"></div>
       <div id="day-details" style="margin-top: 16px;"></div>
-      <button class="btn-action" style="margin-top: 16px;" onclick="closeCalendarModal()">Fechar</button>
+      
+      <button class="btn-action" style="margin-top: 12px; background: var(--bg-box);" onclick="openRetroactiveModal()">📅 Registar Treino Perdido</button>
+      <button class="btn-action" style="margin-top: 8px;" onclick="closeCalendarModal()">Fechar</button>
+    </div>
+  </div>
+
+  <!-- Modal Registro Retroativo -->
+  <div id="retroactive-modal" class="modal-overlay" onclick="closeRetroactiveModal()">
+    <div class="modal-card" onclick="event.stopPropagation()">
+      <h3>Registar Treino de Outro Dia</h3>
+      <input type="date" id="retro-date">
+      <select id="retro-tab">
+        <option value="A">Treino A (Costas / Bíceps)</option>
+        <option value="B">Treino B (Peito / Tríceps)</option>
+        <option value="C">Treino C (Pernas / Ombros)</option>
+      </select>
+      <button class="btn-action" onclick="saveRetroactiveWorkout()">Salvar no Histórico</button>
+      <button class="btn-action" style="background: transparent; border: none; color: var(--text-dim);" onclick="closeRetroactiveModal()">Cancelar</button>
     </div>
   </div>
 
@@ -528,48 +537,56 @@
       ]
     };
 
-    let workoutData = JSON.parse(localStorage.getItem('workout_data_v8')) || defaultData;
-    let workoutHistory = JSON.parse(localStorage.getItem('workout_history_v8')) || {};
-    let lastActiveDate = localStorage.getItem('last_active_date') || new Date().toISOString().split('T')[0];
+    let workoutData = JSON.parse(localStorage.getItem('workout_data_v10')) || defaultData;
+    let workoutHistory = JSON.parse(localStorage.getItem('workout_history_v10')) || {};
+    let lastActiveDate = localStorage.getItem('last_active_date_v10') || new Date().toISOString().split('T')[0];
     let ghConfig = JSON.parse(localStorage.getItem('gh_config')) || {};
     let activeSwapTarget = null;
 
-    // Reset automático diário
     function checkDailyReset() {
       const today = new Date().toISOString().split('T')[0];
       if (today !== lastActiveDate) {
-        let completedExercises = [];
-
-        ['A', 'B', 'C'].forEach(tabKey => {
-          workoutData[tabKey].forEach(ex => {
-            const completedSets = ex.done.filter(Boolean).length;
-            if (completedSets > 0) {
-              completedExercises.push({
-                tab: tabKey,
-                name: ex.name,
-                weight: ex.weight,
-                reps: ex.reps,
-                setsDone: completedSets,
-                totalSets: ex.done.length
-              });
-            }
-            ex.done = ex.done.map(() => false);
-          });
-        });
-
-        if (completedExercises.length > 0) {
-          workoutHistory[lastActiveDate] = completedExercises;
-          localStorage.setItem('workout_history_v8', JSON.stringify(workoutHistory));
-        }
-
+        archiveWorkout(lastActiveDate);
         lastActiveDate = today;
-        localStorage.setItem('last_active_date', today);
+        localStorage.setItem('last_active_date_v10', today);
         saveData();
       }
     }
 
+    function archiveWorkout(dateKey) {
+      let completedExercises = [];
+      ['A', 'B', 'C'].forEach(tabKey => {
+        workoutData[tabKey].forEach(ex => {
+          const completedSets = ex.done.filter(Boolean).length;
+          if (completedSets > 0) {
+            completedExercises.push({
+              tab: tabKey,
+              name: ex.name,
+              weight: ex.weight,
+              reps: ex.reps,
+              setsDone: completedSets,
+              totalSets: ex.done.length
+            });
+          }
+          ex.done = ex.done.map(() => false);
+        });
+      });
+
+      if (completedExercises.length > 0) {
+        workoutHistory[dateKey] = completedExercises;
+        localStorage.setItem('workout_history_v10', JSON.stringify(workoutHistory));
+      }
+    }
+
+    function resetTodayWorkout() {
+      const today = new Date().toISOString().split('T')[0];
+      archiveWorkout(today);
+      saveData();
+      ['A', 'B', 'C'].forEach(renderList);
+    }
+
     function saveData() {
-      localStorage.setItem('workout_data_v8', JSON.stringify(workoutData));
+      localStorage.setItem('workout_data_v10', JSON.stringify(workoutData));
       syncWithGithub();
     }
 
@@ -601,7 +618,7 @@
             'Content-Type': 'application/json'
           },
           body: JSON.stringify({
-            message: 'Update treino e histórico via Web App iPhone',
+            message: 'Update treino e histórico via Web App',
             content: content,
             sha: sha || undefined
           })
@@ -650,7 +667,7 @@
               <span class="control-label">Carga (1 kg)</span>
               <div class="control-inputs">
                 <button class="btn-step" onclick="updateVal('${tabKey}', ${index}, 'weight', -1)">-</button>
-                <span class="val-display" title="Clique para editar manualmente" onclick="manualEditWeight('${tabKey}', ${index})">${item.weight}</span>
+                <span class="val-display" title="Editar peso" onclick="manualEditWeight('${tabKey}', ${index})">${item.weight}</span>
                 <button class="btn-step" onclick="updateVal('${tabKey}', ${index}, 'weight', 1)">+</button>
               </div>
             </div>
@@ -717,6 +734,11 @@
 
     function toggleSet(tabKey, itemIdx, setIdx) {
       workoutData[tabKey][itemIdx].done[setIdx] = !workoutData[tabKey][itemIdx].done[setIdx];
+      
+      const today = new Date().toISOString().split('T')[0];
+      lastActiveDate = today;
+      localStorage.setItem('last_active_date_v10', today);
+
       saveData();
       renderList(tabKey);
     }
@@ -727,7 +749,6 @@
       renderList(tabKey);
     }
 
-    // Modal Calendário e Histórico
     function openCalendarModal() {
       const container = document.getElementById('calendar-container');
       const details = document.getElementById('day-details');
@@ -761,11 +782,11 @@
       const logs = workoutHistory[dateStr];
 
       if (!logs || logs.length === 0) {
-        details.innerHTML = `<p style="font-size:0.8rem; color:var(--text-dim);">Nenhum treino concluído em ${dateStr}.</p>`;
+        details.innerHTML = `<p style="font-size:0.8rem; color:var(--text-dim);">Nenhum treino gravado em ${dateStr}.</p>`;
         return;
       }
 
-      let html = `<h4 style="font-size:0.85rem; margin-bottom:8px; color:var(--accent-c);">Treino em ${dateStr}:</h4>`;
+      let html = `<h4 style="font-size:0.85rem; margin-bottom:8px; color:var(--text-main);">Treino em ${dateStr}:</h4>`;
       logs.forEach(log => {
         html += `
           <div class="history-log-item">
@@ -782,7 +803,41 @@
       document.getElementById('calendar-modal').style.display = 'none';
     }
 
-    // Modal Adicionar Exercício
+    function openRetroactiveModal() {
+      const yesterday = new Date();
+      yesterday.setDate(yesterday.getDate() - 1);
+      document.getElementById('retro-date').value = yesterday.toISOString().split('T')[0];
+      document.getElementById('retroactive-modal').style.display = 'flex';
+    }
+
+    function saveRetroactiveWorkout() {
+      const dateVal = document.getElementById('retro-date').value;
+      const tabVal = document.getElementById('retro-tab').value;
+
+      if (!dateVal) return;
+
+      const logs = workoutData[tabVal].map(ex => ({
+        tab: tabVal,
+        name: ex.name,
+        weight: ex.weight,
+        reps: ex.reps,
+        setsDone: ex.done.length,
+        totalSets: ex.done.length
+      }));
+
+      workoutHistory[dateVal] = logs;
+      localStorage.setItem('workout_history_v10', JSON.stringify(workoutHistory));
+      saveData();
+
+      closeRetroactiveModal();
+      openCalendarModal();
+      showDayDetails(dateVal);
+    }
+
+    function closeRetroactiveModal() {
+      document.getElementById('retroactive-modal').style.display = 'none';
+    }
+
     function openAddModal() {
       document.getElementById('add-modal-title').innerText = `Adicionar ao Treino ${currentActiveTab}`;
       document.getElementById('new-ex-name').value = '';
@@ -814,7 +869,6 @@
       document.getElementById('add-modal').style.display = 'none';
     }
 
-    // Modal Substituição
     function openSwapModal(tabKey, index) {
       activeSwapTarget = { tabKey, index };
       const item = workoutData[tabKey][index];
@@ -850,7 +904,6 @@
       document.getElementById('swap-modal').style.display = 'none';
     }
 
-    // Modal GitHub Config
     function openGithubModal() {
       document.getElementById('gh-user').value = ghConfig.user || '';
       document.getElementById('gh-repo').value = ghConfig.repo || '';
