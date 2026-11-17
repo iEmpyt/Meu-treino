@@ -5,11 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Ficha de Treino - Gabriel</title>
   
+  <!-- Configurações PWA / iOS -->
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="apple-mobile-web-app-title" content="Meu Treino">
   <meta name="theme-color" content="#05070A">
 
+  <!-- Favicon e Apple Touch Icon (Vetor SVG Preto/Cinza) -->
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Crect width='512' height='512' rx='120' fill='%2305070A'/%3E%3Cpath d='M120 180h40v152h-40zM352 180h40v152h-40zM160 210h30v92h-30zM322 210h30v92h-30zM190 240h132v32H190z' fill='%238B949E'/%3E%3Ccircle cx='256' cy='256' r='200' fill='none' stroke='%2330363D' stroke-width='16'/%3E%3C/svg%3E">
   <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Crect width='512' height='512' rx='120' fill='%2305070A'/%3E%3Cpath d='M120 180h40v152h-40zM352 180h40v152h-40zM160 210h30v92h-30zM322 210h30v92h-30zM190 240h132v32H190z' fill='%238B949E'/%3E%3Ccircle cx='256' cy='256' r='200' fill='none' stroke='%2330363D' stroke-width='16'/%3E%3C/svg%3E">
 
@@ -90,7 +92,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.1rem;
+      font-size: 1rem;
       cursor: pointer;
     }
 
@@ -133,6 +135,7 @@
     .tab-content { display: none; }
     .tab-content.active { display: block; }
 
+    /* Cards em Cinza Grafite */
     .exercise-card {
       background: var(--bg-card);
       border: 1px solid var(--border-subtle);
@@ -147,6 +150,32 @@
       justify-content: space-between;
       align-items: center;
       margin-bottom: 12px;
+    }
+
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .order-btns {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .btn-order {
+      background: var(--bg-box);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-muted);
+      width: 20px;
+      height: 16px;
+      border-radius: 4px;
+      font-size: 0.6rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
     }
 
     .exercise-title {
@@ -172,6 +201,7 @@
       margin-bottom: 12px;
     }
 
+    /* Sub-boxes em Cinza Chumbo */
     .control-box {
       background: var(--bg-box);
       border: 1px solid var(--border-subtle);
@@ -209,6 +239,14 @@
       font-size: 0.9rem;
       font-weight: 700;
       color: var(--text-main);
+      cursor: pointer;
+      padding: 2px 6px;
+      border-radius: 4px;
+      transition: background 0.2s;
+    }
+
+    .val-display:hover {
+      background: var(--bg-input);
     }
 
     .sets-row {
@@ -247,6 +285,7 @@
       cursor: pointer;
     }
 
+    /* Modais */
     .modal-overlay {
       position: fixed;
       top: 0; left: 0; right: 0; bottom: 0;
@@ -307,6 +346,51 @@
       cursor: pointer;
       margin-top: 8px;
     }
+
+    /* Calendário UI */
+    .calendar-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 6px;
+      margin-top: 12px;
+      text-align: center;
+    }
+
+    .calendar-day-header {
+      font-size: 0.7rem;
+      color: var(--text-dim);
+      font-weight: 600;
+      padding-bottom: 4px;
+    }
+
+    .calendar-day {
+      aspect-ratio: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--bg-box);
+      border: 1px solid var(--border-subtle);
+      border-radius: 8px;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      cursor: pointer;
+    }
+
+    .calendar-day.trained {
+      background: rgba(16, 185, 129, 0.2);
+      color: var(--accent-c);
+      border: 1px solid var(--accent-c);
+      font-weight: 700;
+    }
+
+    .history-log-item {
+      background: var(--bg-box);
+      border: 1px solid var(--border-subtle);
+      padding: 8px 10px;
+      border-radius: 6px;
+      margin-bottom: 6px;
+      font-size: 0.8rem;
+    }
   </style>
 </head>
 <body>
@@ -318,6 +402,7 @@
         <p id="github-status">Salvo localmente</p>
       </div>
       <div class="header-actions">
+        <button class="btn-icon" title="Calendário de Treinos" onclick="openCalendarModal()">📅</button>
         <button class="btn-icon" title="Adicionar Exercício" onclick="openAddModal()">＋</button>
         <button class="btn-icon" title="Configurações GitHub" onclick="openGithubModal()">⚙️</button>
       </div>
@@ -336,16 +421,18 @@
     <section id="tab-C" class="tab-content"><div id="list-C"></div></section>
   </main>
 
+  <!-- Modal Adicionar Novo Exercício -->
   <div id="add-modal" class="modal-overlay" onclick="closeAddModal()">
     <div class="modal-card" onclick="event.stopPropagation()">
       <h3 id="add-modal-title">Adicionar Exercício ao Treino</h3>
       <input type="text" id="new-ex-name" placeholder="Nome do Exercício (ex: Puxada Triângulo)">
-      <input type="text" id="new-ex-weight" placeholder="Carga Inicial (ex: 45 kg)">
+      <input type="text" id="new-ex-weight" placeholder="Carga Inicial (ex: 45 kg ou 12 kg/lado)">
       <button class="btn-action" onclick="confirmAddExercise()">Adicionar Exercício</button>
       <button class="btn-action" style="background: transparent; border: none; color: var(--text-dim);" onclick="closeAddModal()">Cancelar</button>
     </div>
   </div>
 
+  <!-- Modal Substituição -->
   <div id="swap-modal" class="modal-overlay" onclick="closeSwapModal()">
     <div class="modal-card" onclick="event.stopPropagation()">
       <h3 id="swap-title">Substituir Exercício</h3>
@@ -354,6 +441,17 @@
     </div>
   </div>
 
+  <!-- Modal Calendário e Histórico -->
+  <div id="calendar-modal" class="modal-overlay" onclick="closeCalendarModal()">
+    <div class="modal-card" onclick="event.stopPropagation()">
+      <h3>Calendário de Treinos</h3>
+      <div id="calendar-container"></div>
+      <div id="day-details" style="margin-top: 16px;"></div>
+      <button class="btn-action" style="margin-top: 16px;" onclick="closeCalendarModal()">Fechar</button>
+    </div>
+  </div>
+
+  <!-- Modal GitHub Sync -->
   <div id="github-modal" class="modal-overlay" onclick="closeGithubModal()">
     <div class="modal-card" onclick="event.stopPropagation()">
       <h3>Configurar Sincronização GitHub</h3>
@@ -430,12 +528,48 @@
       ]
     };
 
-    let workoutData = JSON.parse(localStorage.getItem('workout_data_v7')) || defaultData;
+    let workoutData = JSON.parse(localStorage.getItem('workout_data_v8')) || defaultData;
+    let workoutHistory = JSON.parse(localStorage.getItem('workout_history_v8')) || {};
+    let lastActiveDate = localStorage.getItem('last_active_date') || new Date().toISOString().split('T')[0];
     let ghConfig = JSON.parse(localStorage.getItem('gh_config')) || {};
     let activeSwapTarget = null;
 
+    // Reset automático diário
+    function checkDailyReset() {
+      const today = new Date().toISOString().split('T')[0];
+      if (today !== lastActiveDate) {
+        let completedExercises = [];
+
+        ['A', 'B', 'C'].forEach(tabKey => {
+          workoutData[tabKey].forEach(ex => {
+            const completedSets = ex.done.filter(Boolean).length;
+            if (completedSets > 0) {
+              completedExercises.push({
+                tab: tabKey,
+                name: ex.name,
+                weight: ex.weight,
+                reps: ex.reps,
+                setsDone: completedSets,
+                totalSets: ex.done.length
+              });
+            }
+            ex.done = ex.done.map(() => false);
+          });
+        });
+
+        if (completedExercises.length > 0) {
+          workoutHistory[lastActiveDate] = completedExercises;
+          localStorage.setItem('workout_history_v8', JSON.stringify(workoutHistory));
+        }
+
+        lastActiveDate = today;
+        localStorage.setItem('last_active_date', today);
+        saveData();
+      }
+    }
+
     function saveData() {
-      localStorage.setItem('workout_data_v7', JSON.stringify(workoutData));
+      localStorage.setItem('workout_data_v8', JSON.stringify(workoutData));
       syncWithGithub();
     }
 
@@ -457,7 +591,9 @@
           sha = getData.sha;
         }
 
-        const content = btoa(unescape(encodeURIComponent(JSON.stringify(workoutData, null, 2))));
+        const payload = { workoutData, workoutHistory };
+        const content = btoa(unescape(encodeURIComponent(JSON.stringify(payload, null, 2))));
+        
         const putRes = await fetch(url, {
           method: 'PUT',
           headers: {
@@ -465,7 +601,7 @@
             'Content-Type': 'application/json'
           },
           body: JSON.stringify({
-            message: 'Update treino via Web App iPhone',
+            message: 'Update treino e histórico via Web App iPhone',
             content: content,
             sha: sha || undefined
           })
@@ -499,17 +635,23 @@
         card.className = 'exercise-card';
         card.innerHTML = `
           <div class="exercise-header">
-            <span class="exercise-title">${item.name}</span>
+            <div class="header-left">
+              <div class="order-btns">
+                <button class="btn-order" onclick="moveExercise('${tabKey}', ${index}, -1)">▲</button>
+                <button class="btn-order" onclick="moveExercise('${tabKey}', ${index}, 1)">▼</button>
+              </div>
+              <span class="exercise-title">${item.name}</span>
+            </div>
             <button class="btn-swap" onclick="openSwapModal('${tabKey}', ${index})">🔀 Trocar</button>
           </div>
 
           <div class="controls-grid">
             <div class="control-box">
-              <span class="control-label">Carga</span>
+              <span class="control-label">Carga (1 kg)</span>
               <div class="control-inputs">
-                <button class="btn-step" onclick="updateVal('${tabKey}', ${index}, 'weight', -2)">-</button>
-                <span class="val-display">${item.weight}</span>
-                <button class="btn-step" onclick="updateVal('${tabKey}', ${index}, 'weight', 2)">+</button>
+                <button class="btn-step" onclick="updateVal('${tabKey}', ${index}, 'weight', -1)">-</button>
+                <span class="val-display" title="Clique para editar manualmente" onclick="manualEditWeight('${tabKey}', ${index})">${item.weight}</span>
+                <button class="btn-step" onclick="updateVal('${tabKey}', ${index}, 'weight', 1)">+</button>
               </div>
             </div>
 
@@ -536,9 +678,31 @@
       });
     }
 
+    function moveExercise(tabKey, index, direction) {
+      const targetIndex = index + direction;
+      if (targetIndex < 0 || targetIndex >= workoutData[tabKey].length) return;
+      
+      const temp = workoutData[tabKey][index];
+      workoutData[tabKey][index] = workoutData[tabKey][targetIndex];
+      workoutData[tabKey][targetIndex] = temp;
+
+      saveData();
+      renderList(tabKey);
+    }
+
+    function manualEditWeight(tabKey, index) {
+      const current = workoutData[tabKey][index].weight;
+      const input = prompt("Digite a carga exata:", current);
+      if (input !== null && input.trim() !== '') {
+        workoutData[tabKey][index].weight = input.trim();
+        saveData();
+        renderList(tabKey);
+      }
+    }
+
     function updateVal(tabKey, itemIdx, field, delta) {
       let current = workoutData[tabKey][itemIdx][field];
-      let num = parseInt(current) || 0;
+      let num = parseFloat(current) || 0;
       let next = Math.max(1, num + delta);
       
       if (field === 'weight') {
@@ -563,6 +727,62 @@
       renderList(tabKey);
     }
 
+    // Modal Calendário e Histórico
+    function openCalendarModal() {
+      const container = document.getElementById('calendar-container');
+      const details = document.getElementById('day-details');
+      details.innerHTML = '';
+      container.innerHTML = '';
+
+      const now = new Date();
+      const year = now.getFullYear();
+      const month = now.getMonth();
+      const daysInMonth = new Date(year, month + 1, 0).getDate();
+
+      const daysOfWeek = ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb'];
+      let html = `<div style="font-weight:700; margin-bottom:8px; font-size:0.9rem;">${now.toLocaleString('pt-BR', { month: 'long' }).toUpperCase()} ${year}</div>`;
+      html += '<div class="calendar-grid">';
+      
+      daysOfWeek.forEach(d => html += `<div class="calendar-day-header">${d}</div>`);
+
+      for (let i = 1; i <= daysInMonth; i++) {
+        const dateStr = `${year}-${String(month + 1).padStart(2, '0')}-${String(i).padStart(2, '0')}`;
+        const trained = workoutHistory[dateStr] ? 'trained' : '';
+        html += `<div class="calendar-day ${trained}" onclick="showDayDetails('${dateStr}')">${i}</div>`;
+      }
+
+      html += '</div>';
+      container.innerHTML = html;
+      document.getElementById('calendar-modal').style.display = 'flex';
+    }
+
+    function showDayDetails(dateStr) {
+      const details = document.getElementById('day-details');
+      const logs = workoutHistory[dateStr];
+
+      if (!logs || logs.length === 0) {
+        details.innerHTML = `<p style="font-size:0.8rem; color:var(--text-dim);">Nenhum treino concluído em ${dateStr}.</p>`;
+        return;
+      }
+
+      let html = `<h4 style="font-size:0.85rem; margin-bottom:8px; color:var(--accent-c);">Treino em ${dateStr}:</h4>`;
+      logs.forEach(log => {
+        html += `
+          <div class="history-log-item">
+            <strong>[Treino ${log.tab}] ${log.name}</strong><br>
+            Carga: ${log.weight} | Séries feitas: ${log.setsDone}/${log.totalSets}
+          </div>
+        `;
+      });
+
+      details.innerHTML = html;
+    }
+
+    function closeCalendarModal() {
+      document.getElementById('calendar-modal').style.display = 'none';
+    }
+
+    // Modal Adicionar Exercício
     function openAddModal() {
       document.getElementById('add-modal-title').innerText = `Adicionar ao Treino ${currentActiveTab}`;
       document.getElementById('new-ex-name').value = '';
@@ -594,6 +814,7 @@
       document.getElementById('add-modal').style.display = 'none';
     }
 
+    // Modal Substituição
     function openSwapModal(tabKey, index) {
       activeSwapTarget = { tabKey, index };
       const item = workoutData[tabKey][index];
@@ -629,6 +850,7 @@
       document.getElementById('swap-modal').style.display = 'none';
     }
 
+    // Modal GitHub Config
     function openGithubModal() {
       document.getElementById('gh-user').value = ghConfig.user || '';
       document.getElementById('gh-repo').value = ghConfig.repo || '';
@@ -653,6 +875,7 @@
       document.getElementById('github-modal').style.display = 'none';
     }
 
+    checkDailyReset();
     ['A', 'B', 'C'].forEach(renderList);
     if (ghConfig.token) document.getElementById('github-status').innerText = "Ligado ao GitHub";
   </script>
