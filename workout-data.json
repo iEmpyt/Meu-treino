@@ -91,7 +91,7 @@
         "id": 1,
         "name": "Supino Reto Barra",
         "group": "peito",
-        "weight": "16 kg/lado",
+        "weight": "15 kg/lado",
         "reps": "8-12",
         "done": [
           true,
