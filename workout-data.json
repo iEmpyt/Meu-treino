@@ -57,15 +57,15 @@
         "reps": "8-12",
         "done": [
           true,
-          false,
-          false
+          true,
+          true
         ]
       },
       {
         "id": 6,
         "name": "Rosca Direta Barra",
         "group": "biceps",
-        "weight": "10 kg/lado",
+        "weight": "9 kg/lado",
         "reps": "8-12",
         "done": [
           false,
