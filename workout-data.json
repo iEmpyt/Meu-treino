@@ -103,12 +103,12 @@
         "id": 2,
         "name": "Supino Inclinado Máquina",
         "group": "peito",
-        "weight": "31 kg",
+        "weight": "30 kg",
         "reps": "8-12",
         "done": [
-          false,
-          false,
-          false
+          true,
+          true,
+          true
         ]
       },
       {
