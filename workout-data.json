@@ -94,9 +94,9 @@
         "weight": "16 kg/lado",
         "reps": "8-12",
         "done": [
-          false,
-          false,
-          false
+          true,
+          true,
+          true
         ]
       },
       {
