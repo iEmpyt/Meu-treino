@@ -244,6 +244,18 @@
           false,
           false
         ]
+      },
+      {
+        "id": 1794881115780,
+        "name": "Elevação lateral (Cross)",
+        "group": "costas",
+        "weight": "9 Kg",
+        "reps": "8-12",
+        "done": [
+          false,
+          false,
+          false
+        ]
       }
     ]
   },
