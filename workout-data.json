@@ -115,10 +115,10 @@
         "id": 3,
         "name": "Peck Deck (Crucifixo)",
         "group": "peito",
-        "weight": "54 kg",
+        "weight": "55 kg",
         "reps": "8-12",
         "done": [
-          false,
+          true,
           false,
           false
         ]
