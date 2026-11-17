@@ -234,18 +234,6 @@
         ]
       },
       {
-        "id": 6,
-        "name": "Peck Deck Inverso",
-        "group": "ombros",
-        "weight": "25 kg",
-        "reps": "8-12",
-        "done": [
-          false,
-          false,
-          false
-        ]
-      },
-      {
         "id": 1794881115780,
         "name": "Elevação lateral (Cross)",
         "group": "costas",
@@ -253,6 +241,18 @@
         "reps": "8-12",
         "done": [
           true,
+          true,
+          true
+        ]
+      },
+      {
+        "id": 6,
+        "name": "Peck Deck Inverso",
+        "group": "ombros",
+        "weight": "25 kg",
+        "reps": "8-12",
+        "done": [
+          false,
           false,
           false
         ]
