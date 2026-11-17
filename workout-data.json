@@ -127,7 +127,7 @@
         "id": 4,
         "name": "Tríceps Pulley",
         "group": "triceps",
-        "weight": "31 kg",
+        "weight": "30 kg",
         "reps": "8-12",
         "done": [
           false,
