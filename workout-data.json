@@ -206,7 +206,7 @@
         "done": [
           true,
           true,
-          false
+          true
         ]
       },
       {
@@ -216,7 +216,7 @@
         "weight": "6 kg/halter",
         "reps": "8-12",
         "done": [
-          false,
+          true,
           false,
           false
         ]
