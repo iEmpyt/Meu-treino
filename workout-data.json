@@ -131,7 +131,7 @@
         "reps": "8-12",
         "done": [
           true,
-          false,
+          true,
           false
         ]
       },
