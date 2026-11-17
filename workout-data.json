@@ -222,18 +222,6 @@
         ]
       },
       {
-        "id": 6,
-        "name": "Peck Deck Inverso",
-        "group": "ombros",
-        "weight": "25 kg",
-        "reps": "8-12",
-        "done": [
-          false,
-          false,
-          false
-        ]
-      },
-      {
         "id": 1794881074124,
         "name": "Elevação frontal",
         "group": "costas",
@@ -242,6 +230,18 @@
         "done": [
           true,
           true,
+          true
+        ]
+      },
+      {
+        "id": 6,
+        "name": "Peck Deck Inverso",
+        "group": "ombros",
+        "weight": "25 kg",
+        "reps": "8-12",
+        "done": [
+          false,
+          false,
           false
         ]
       }
