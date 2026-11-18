@@ -8,9 +8,9 @@
         "weight": "40 kg",
         "reps": "8-12",
         "done": [
-          true,
-          true,
-          true
+          false,
+          false,
+          false
         ]
       },
       {
@@ -20,9 +20,9 @@
         "weight": "15 kg",
         "reps": "8-12",
         "done": [
-          true,
-          true,
-          true
+          false,
+          false,
+          false
         ]
       },
       {
@@ -32,9 +32,9 @@
         "weight": "40 kg",
         "reps": "8-12",
         "done": [
-          true,
-          true,
-          true
+          false,
+          false,
+          false
         ]
       },
       {
@@ -44,45 +44,45 @@
         "weight": "15 kg",
         "reps": "8-12",
         "done": [
-          true,
-          true,
-          true
+          false,
+          false,
+          false
         ]
       },
       {
         "id": 5,
         "name": "Rosca Scott Barra W",
         "group": "biceps",
-        "weight": "8 kg/lado",
+        "weight": "10 kg/lado",
         "reps": "8-12",
         "done": [
-          true,
-          true,
-          true
+          false,
+          false,
+          false
         ]
       },
       {
         "id": 6,
         "name": "Rosca Direta Barra",
         "group": "biceps",
-        "weight": "8 kg/lado",
+        "weight": "10 kg/lado",
         "reps": "8-12",
         "done": [
-          true,
-          true,
-          true
+          false,
+          false,
+          false
         ]
       },
       {
         "id": 7,
         "name": "Rosca Martelo",
         "group": "biceps",
-        "weight": "8 kg/lado",
+        "weight": "10 kg/lado",
         "reps": "8-12",
         "done": [
-          true,
-          true,
-          true
+          false,
+          false,
+          false
         ]
       }
     ],
@@ -91,48 +91,48 @@
         "id": 1,
         "name": "Supino Reto Barra",
         "group": "peito",
-        "weight": "15 kg/lado",
+        "weight": "16 kg/lado",
         "reps": "8-12",
         "done": [
-          true,
-          true,
-          true
+          false,
+          false,
+          false
         ]
       },
       {
         "id": 2,
         "name": "Supino Inclinado Máquina",
         "group": "peito",
-        "weight": "30 kg",
+        "weight": "25 kg",
         "reps": "8-12",
         "done": [
-          true,
-          true,
-          true
+          false,
+          false,
+          false
         ]
       },
       {
         "id": 3,
         "name": "Peck Deck (Crucifixo)",
         "group": "peito",
-        "weight": "55 kg",
+        "weight": "35 kg",
         "reps": "8-12",
         "done": [
-          true,
-          true,
-          true
+          false,
+          false,
+          false
         ]
       },
       {
         "id": 4,
         "name": "Tríceps Pulley",
         "group": "triceps",
-        "weight": "30 kg",
+        "weight": "25 kg",
         "reps": "8-12",
         "done": [
-          true,
-          true,
-          true
+          false,
+          false,
+          false
         ]
       },
       {
@@ -142,20 +142,20 @@
         "weight": "20 kg",
         "reps": "8-12",
         "done": [
-          true,
-          true,
-          true
+          false,
+          false,
+          false
         ]
       },
       {
         "id": 6,
         "name": "Tríceps Testa",
         "group": "triceps",
-        "weight": "10 kg",
+        "weight": "8 kg/lado",
         "reps": "8-12",
         "done": [
-          true,
-          true,
+          false,
+          false,
           false
         ]
       }
@@ -168,9 +168,9 @@
         "weight": "130 kg",
         "reps": "8-12",
         "done": [
-          false,
-          false,
-          false
+          true,
+          true,
+          true
         ]
       },
       {
@@ -201,12 +201,12 @@
         "id": 4,
         "name": "Desenvolvimento Máquina",
         "group": "ombros",
-        "weight": "10 kg",
+        "weight": "15 kg",
         "reps": "8-12",
         "done": [
-          true,
-          true,
-          true
+          false,
+          false,
+          false
         ]
       },
       {
@@ -216,33 +216,9 @@
         "weight": "6 kg/halter",
         "reps": "8-12",
         "done": [
-          true,
-          true,
-          true
-        ]
-      },
-      {
-        "id": 1794881074124,
-        "name": "Elevação frontal",
-        "group": "costas",
-        "weight": "6 Kg",
-        "reps": "8-12",
-        "done": [
-          true,
-          true,
-          true
-        ]
-      },
-      {
-        "id": 1794881115780,
-        "name": "Elevação lateral (Cross)",
-        "group": "costas",
-        "weight": "9 Kg",
-        "reps": "8-12",
-        "done": [
-          true,
-          true,
-          true
+          false,
+          false,
+          false
         ]
       },
       {
