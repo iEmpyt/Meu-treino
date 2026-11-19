@@ -168,9 +168,9 @@
         "weight": "130 kg",
         "reps": "8-12",
         "done": [
-          true,
-          true,
-          true
+          false,
+          false,
+          false
         ]
       },
       {
@@ -180,9 +180,9 @@
         "weight": "50 kg",
         "reps": "8-12",
         "done": [
-          true,
-          true,
-          true
+          false,
+          false,
+          false
         ]
       },
       {
@@ -192,8 +192,8 @@
         "weight": "50 kg",
         "reps": "8-12",
         "done": [
-          true,
-          true,
+          false,
+          false,
           false
         ]
       },
@@ -204,9 +204,9 @@
         "weight": "15 kg",
         "reps": "8-12",
         "done": [
-          true,
-          true,
-          true
+          false,
+          false,
+          false
         ]
       },
       {
@@ -216,9 +216,9 @@
         "weight": "6 kg/halter",
         "reps": "8-12",
         "done": [
-          true,
-          true,
-          true
+          false,
+          false,
+          false
         ]
       },
       {
@@ -235,5 +235,48 @@
       }
     ]
   },
-  "workoutHistory": {}
+  "workoutHistory": {
+    "2026-11-18": [
+      {
+        "tab": "C",
+        "name": "Leg Press 45°",
+        "weight": "130 kg",
+        "reps": "8-12",
+        "setsDone": 3,
+        "totalSets": 3
+      },
+      {
+        "tab": "C",
+        "name": "Cadeira Extensora",
+        "weight": "50 kg",
+        "reps": "8-12",
+        "setsDone": 3,
+        "totalSets": 3
+      },
+      {
+        "tab": "C",
+        "name": "Mesa Flexora",
+        "weight": "50 kg",
+        "reps": "8-12",
+        "setsDone": 3,
+        "totalSets": 3
+      },
+      {
+        "tab": "C",
+        "name": "Desenvolvimento Máquina",
+        "weight": "15 kg",
+        "reps": "8-12",
+        "setsDone": 3,
+        "totalSets": 3
+      },
+      {
+        "tab": "C",
+        "name": "Elevação Lateral",
+        "weight": "6 kg/halter",
+        "reps": "8-12",
+        "setsDone": 3,
+        "totalSets": 3
+      }
+    ]
+  }
 }
