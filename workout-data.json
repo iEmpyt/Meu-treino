@@ -8,8 +8,8 @@
         "weight": "40 kg",
         "reps": "8-12",
         "done": [
-          false,
-          false,
+          true,
+          true,
           false
         ]
       },
@@ -22,7 +22,7 @@
         "done": [
           true,
           true,
-          false
+          true
         ]
       },
       {
