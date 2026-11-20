@@ -8,8 +8,8 @@
         "weight": "40 kg",
         "reps": "8-12",
         "done": [
-          true,
-          true,
+          false,
+          false,
           false
         ]
       },
@@ -20,9 +20,9 @@
         "weight": "15 kg",
         "reps": "8-12",
         "done": [
-          true,
-          true,
-          true
+          false,
+          false,
+          false
         ]
       },
       {
@@ -32,9 +32,9 @@
         "weight": "40 kg",
         "reps": "8-12",
         "done": [
-          true,
-          true,
-          true
+          false,
+          false,
+          false
         ]
       },
       {
@@ -44,9 +44,9 @@
         "weight": "15 kg",
         "reps": "8-12",
         "done": [
-          true,
-          true,
-          true
+          false,
+          false,
+          false
         ]
       },
       {
@@ -56,9 +56,9 @@
         "weight": "10 kg/lado",
         "reps": "8-12",
         "done": [
-          true,
-          true,
-          true
+          false,
+          false,
+          false
         ]
       },
       {
@@ -68,9 +68,9 @@
         "weight": "10 kg/lado",
         "reps": "8-12",
         "done": [
-          true,
-          true,
-          true
+          false,
+          false,
+          false
         ]
       },
       {
@@ -80,9 +80,9 @@
         "weight": "10 kg/lado",
         "reps": "8-12",
         "done": [
-          true,
-          true,
-          true
+          false,
+          false,
+          false
         ]
       }
     ],
