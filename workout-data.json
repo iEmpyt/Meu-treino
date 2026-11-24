@@ -151,7 +151,7 @@
         "id": 6,
         "name": "Tríceps Testa",
         "group": "triceps",
-        "weight": "8 kg/lado",
+        "weight": "8 kg",
         "reps": "8-12",
         "done": [
           false,
