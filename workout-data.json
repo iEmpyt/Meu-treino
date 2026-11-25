@@ -177,11 +177,11 @@
         "id": 2,
         "name": "Cadeira Extensora",
         "group": "pernas",
-        "weight": "46 kg",
+        "weight": "45 kg",
         "reps": "8-12",
         "done": [
-          false,
-          false,
+          true,
+          true,
           false
         ]
       },
