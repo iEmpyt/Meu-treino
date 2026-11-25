@@ -94,9 +94,9 @@
         "weight": "16 kg/lado",
         "reps": "8-12",
         "done": [
-          true,
-          true,
-          true
+          false,
+          false,
+          false
         ]
       },
       {
@@ -106,9 +106,9 @@
         "weight": "25 kg",
         "reps": "8-12",
         "done": [
-          true,
-          true,
-          true
+          false,
+          false,
+          false
         ]
       },
       {
@@ -118,9 +118,9 @@
         "weight": "45 kg",
         "reps": "8-12",
         "done": [
-          true,
-          true,
-          true
+          false,
+          false,
+          false
         ]
       },
       {
@@ -130,9 +130,9 @@
         "weight": "35 kg",
         "reps": "8-12",
         "done": [
-          true,
-          true,
-          true
+          false,
+          false,
+          false
         ]
       },
       {
@@ -142,9 +142,9 @@
         "weight": "25 kg",
         "reps": "8-12",
         "done": [
-          true,
-          true,
-          true
+          false,
+          false,
+          false
         ]
       },
       {
@@ -154,9 +154,9 @@
         "weight": "6 kg",
         "reps": "8-12",
         "done": [
-          true,
-          true,
-          true
+          false,
+          false,
+          false
         ]
       }
     ],
@@ -331,6 +331,56 @@
         "tab": "A",
         "name": "Rosca Martelo",
         "weight": "10 kg/lado",
+        "reps": "8-12",
+        "setsDone": 3,
+        "totalSets": 3
+      }
+    ],
+    "2026-11-24": [
+      {
+        "tab": "B",
+        "name": "Supino Reto Barra",
+        "weight": "16 kg/lado",
+        "reps": "8-12",
+        "setsDone": 3,
+        "totalSets": 3
+      },
+      {
+        "tab": "B",
+        "name": "Supino Inclinado Máquina",
+        "weight": "25 kg",
+        "reps": "8-12",
+        "setsDone": 3,
+        "totalSets": 3
+      },
+      {
+        "tab": "B",
+        "name": "Peck Deck (Crucifixo)",
+        "weight": "45 kg",
+        "reps": "8-12",
+        "setsDone": 3,
+        "totalSets": 3
+      },
+      {
+        "tab": "B",
+        "name": "Tríceps Pulley",
+        "weight": "35 kg",
+        "reps": "8-12",
+        "setsDone": 3,
+        "totalSets": 3
+      },
+      {
+        "tab": "B",
+        "name": "Tríceps Corda",
+        "weight": "25 kg",
+        "reps": "8-12",
+        "setsDone": 3,
+        "totalSets": 3
+      },
+      {
+        "tab": "B",
+        "name": "Tríceps Testa",
+        "weight": "6 kg",
         "reps": "8-12",
         "setsDone": 3,
         "totalSets": 3
