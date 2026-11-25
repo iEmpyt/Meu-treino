@@ -182,14 +182,14 @@
         "done": [
           true,
           true,
-          false
+          true
         ]
       },
       {
         "id": 3,
         "name": "Mesa Flexora",
         "group": "pernas",
-        "weight": "50 kg",
+        "weight": "49 kg",
         "reps": "8-12",
         "done": [
           false,
