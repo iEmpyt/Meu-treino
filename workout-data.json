@@ -220,6 +220,18 @@
           true,
           true
         ]
+      },
+      {
+        "id": 1795641186156,
+        "name": "Elevação frontal",
+        "group": "costas",
+        "weight": "6 kg/lado",
+        "reps": "8-12",
+        "done": [
+          false,
+          false,
+          false
+        ]
       }
     ]
   },
