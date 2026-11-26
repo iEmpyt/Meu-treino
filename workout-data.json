@@ -41,12 +41,12 @@
         "id": 4,
         "name": "Remada Curvada / Maq.",
         "group": "costas",
-        "weight": "15 kg",
+        "weight": "20 kg",
         "reps": "8-12",
         "done": [
           true,
           true,
-          false
+          true
         ]
       },
       {
