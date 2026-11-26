@@ -77,12 +77,12 @@
         "id": 7,
         "name": "Rosca Martelo",
         "group": "biceps",
-        "weight": "10 kg/lado",
+        "weight": "8 kg/lado",
         "reps": "8-12",
         "done": [
           true,
           true,
-          false
+          true
         ]
       }
     ],
