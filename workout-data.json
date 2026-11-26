@@ -65,7 +65,7 @@
         "id": 6,
         "name": "Rosca Direta Barra",
         "group": "biceps",
-        "weight": "10 kg/lado",
+        "weight": "8 kg/lado",
         "reps": "8-12",
         "done": [
           false,
