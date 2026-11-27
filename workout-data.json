@@ -8,9 +8,9 @@
         "weight": "50 kg",
         "reps": "8-12",
         "done": [
-          true,
-          true,
-          true
+          false,
+          false,
+          false
         ]
       },
       {
@@ -20,9 +20,9 @@
         "weight": "20 kg",
         "reps": "8-12",
         "done": [
-          true,
-          true,
-          true
+          false,
+          false,
+          false
         ]
       },
       {
@@ -32,9 +32,9 @@
         "weight": "40 kg",
         "reps": "8-12",
         "done": [
-          true,
-          true,
-          true
+          false,
+          false,
+          false
         ]
       },
       {
@@ -44,9 +44,9 @@
         "weight": "20 kg",
         "reps": "8-12",
         "done": [
-          true,
-          true,
-          true
+          false,
+          false,
+          false
         ]
       },
       {
@@ -56,9 +56,9 @@
         "weight": "10 kg/lado",
         "reps": "8-12",
         "done": [
-          true,
-          true,
-          true
+          false,
+          false,
+          false
         ]
       },
       {
@@ -68,9 +68,9 @@
         "weight": "8 kg/lado",
         "reps": "8-12",
         "done": [
-          true,
-          true,
-          true
+          false,
+          false,
+          false
         ]
       },
       {
@@ -80,9 +80,9 @@
         "weight": "8 kg/lado",
         "reps": "8-12",
         "done": [
-          true,
-          true,
-          true
+          false,
+          false,
+          false
         ]
       }
     ],
@@ -451,6 +451,64 @@
         "tab": "C",
         "name": "Agachamento inclinado",
         "weight": "100 kg",
+        "reps": "8-12",
+        "setsDone": 3,
+        "totalSets": 3
+      }
+    ],
+    "2026-11-26": [
+      {
+        "tab": "A",
+        "name": "Puxada Frontal Aberta",
+        "weight": "50 kg",
+        "reps": "8-12",
+        "setsDone": 3,
+        "totalSets": 3
+      },
+      {
+        "tab": "A",
+        "name": "Remada Baixa Triângulo",
+        "weight": "20 kg",
+        "reps": "8-12",
+        "setsDone": 3,
+        "totalSets": 3
+      },
+      {
+        "tab": "A",
+        "name": "Puxada Fechada Supinada",
+        "weight": "40 kg",
+        "reps": "8-12",
+        "setsDone": 3,
+        "totalSets": 3
+      },
+      {
+        "tab": "A",
+        "name": "Remada Curvada / Maq.",
+        "weight": "20 kg",
+        "reps": "8-12",
+        "setsDone": 3,
+        "totalSets": 3
+      },
+      {
+        "tab": "A",
+        "name": "Rosca Scott Barra W",
+        "weight": "10 kg/lado",
+        "reps": "8-12",
+        "setsDone": 3,
+        "totalSets": 3
+      },
+      {
+        "tab": "A",
+        "name": "Rosca Direta Barra",
+        "weight": "8 kg/lado",
+        "reps": "8-12",
+        "setsDone": 3,
+        "totalSets": 3
+      },
+      {
+        "tab": "A",
+        "name": "Rosca Martelo",
+        "weight": "8 kg/lado",
         "reps": "8-12",
         "setsDone": 3,
         "totalSets": 3
