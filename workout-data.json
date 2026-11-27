@@ -88,10 +88,10 @@
     ],
     "B": [
       {
-        "id": 1,
-        "name": "Supino Reto Barra",
+        "id": 2,
+        "name": "Supino Inclinado Máquina",
         "group": "peito",
-        "weight": "16 kg/lado",
+        "weight": "25 kg",
         "reps": "8-12",
         "done": [
           false,
@@ -100,10 +100,10 @@
         ]
       },
       {
-        "id": 2,
-        "name": "Supino Inclinado Máquina",
+        "id": 1,
+        "name": "Supino Reto Barra",
         "group": "peito",
-        "weight": "25 kg",
+        "weight": "16 kg/lado",
         "reps": "8-12",
         "done": [
           false,
